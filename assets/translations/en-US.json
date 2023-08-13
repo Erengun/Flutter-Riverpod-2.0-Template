@@ -1,0 +1,8 @@
+{
+  "app_name": "Flutter Production Boilerplate",
+
+  "bottom_nav_first": "Home",
+  "bottom_nav_second": "Info",
+  "toggle_language": "Change Language",
+  "toggle_theme": "Change Theme"
+}
