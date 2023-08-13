@@ -1,6 +1,6 @@
 # Flutter Riverpod 2.0 Template
 
-[![GitHub license](https://img.shields.io/github/license/rydmike/flutter_riverpod_template)](
+[![GitHub license]([https://img.shields.io/github/license/rydmike/flutter_riverpod_template](https://github.com/Erengun/Flutter-Riverpod-2.0-Template/blob/main/LICENSE))](
 
 ## A flutter template with Riverpod 2.0, Freezed, Go Router, Hive, Easy Localization and more.
 
