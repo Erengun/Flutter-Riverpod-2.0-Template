@@ -51,9 +51,17 @@ dependencies:
   stack_trace: ^1.11.0
   water_drop_nav_bar: ^2.2.0+5
   dart_depcheck: ^0.0.1-dev.6+1
+  riverpod: ^2.3.6
+  retrofit: ^4.0.1
+  hooks_riverpod: ^2.3.6
+  flutter_hooks: ^0.20.3
+  dio: ^5.2.1+1
+  fpdart: ^1.1.0
+  change_app_package_name: ^1.1.0
 
 dev_dependencies:
   dependency_validator: ^3.1.0
+  build_runner: ^2.4.5
   flutter_test:
     sdk: flutter
 
