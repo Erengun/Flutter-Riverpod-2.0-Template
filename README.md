@@ -33,12 +33,43 @@ This repository makes use of the following pub packages:
 | [Hive](https://pub.dev/packages/hive)                               | ^2.2.3  | Platform independent storage.      |
 | [Url Launcher](https://pub.dev/packages/url_launcher)               | ^6.1.7  | Open urls in Browser               |
 | [Ionicons](https://pub.dev/packages/ionicons)                       | ^0.2.2  | Modern icon library                |
+| [Dependency Validator](https://pub.dev/packages/dependency_validator) | ^3.2.3  | Validate and check for outdated packages   |
 
 > \* Recommended to keep regardless of your project
 
 ## Using this package as a starting point
 
 After following the installation steps you can customize your project. 
+
+### Checking Dependencies
+
+To ensure that your project dependencies are up-to-date and don't have any security vulnerabilities, you can use the `dependency_validator` package. Follow these steps:
+
+1. Add `dependency_validator` to your `dev_dependencies` in [pubspec.yaml](./pubspec.yaml):
+
+    ```yaml
+    dev_dependencies:
+      dependency_validator: ^3.2.3
+    ```
+
+2. Run the following command in your terminal to check for outdated and vulnerable dependencies:
+
+    ```bash
+    dart pub run dependency_validator
+    ```
+
+    This command will provide information about any outdated or vulnerable packages in your project.
+
+3. Review the output to identify any dependencies that need updating. The report will include information about the current and latest versions of each package.
+
+4. Update your `pubspec.yaml` file with the latest versions of the outdated packages.
+
+5. Run `dart pub get` to fetch the updated dependencies.
+
+6. Re-run the `dart pub run dependency_validator` command to ensure all dependencies are now up-to-date.
+
+
+
 
 The screens and widgets that
 are inside the project can be easily replaced or removed. They are supposed to give the user a basic
