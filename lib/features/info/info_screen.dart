@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-import '../../widgets/app_bar_gone.dart';
-import '../../widgets/bottom_nav_bar.dart';
-import 'grid_item.dart';
+import '../../ui/widgets/app_bar_gone.dart';
+import '../../common/bottom_nav_bar/bottom_nav_bar.dart';
+import '../../common/grid_item.dart';
 
 class SecondScreen extends ConsumerWidget {
   const SecondScreen({super.key});
