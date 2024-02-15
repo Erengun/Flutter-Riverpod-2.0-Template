@@ -3,10 +3,11 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'config/router/app_router.dart';
+
 import 'config/theme/theme_logic.dart';
 import 'config/theme/theme_ui_model.dart';
 import 'di/components/service_locator.dart';
+import 'router/app_router.dart';
 
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
