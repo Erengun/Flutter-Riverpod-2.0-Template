@@ -1,7 +1,7 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../models/user.dart';
+import '../models/user.dart';
 
 const String userBox = 'user';
 
