@@ -47,7 +47,7 @@ class SecondScreen extends ConsumerWidget {
   }
 }
 
-///TODO: Parse this list from pub.dev
+//TO-DO: Parse this list from pub.dev
 List<GridItem> packageList = <GridItem>[
   GridItem(
     title: 'flutter_riverpod',
