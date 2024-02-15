@@ -6,8 +6,8 @@ import 'package:injectable/injectable.dart';
 
 import '../../data/getstore/get_store_helper.dart';
 import '../../di/components/service_locator.dart';
-import '../../features/info/info_screen.dart';
 import '../../features/home/home.dart';
+import '../../features/info/info_screen.dart';
 import 'fade_extension.dart';
 
 GetStoreHelper getStoreHelper = getIt<GetStoreHelper>();
