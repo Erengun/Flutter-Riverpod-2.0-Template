@@ -6,7 +6,7 @@ import 'package:ionicons/ionicons.dart';
 
 import '../../../utils/context_extensions.dart';
 
-import '../../ui/widgets/app_bar_gone.dart';
+import '../../common/app_bar_gone.dart';
 import '../../common/bottom_nav_bar/bottom_nav_bar.dart';
 import 'widgets/header.dart';
 import 'widgets/social_tile_widget.dart';
