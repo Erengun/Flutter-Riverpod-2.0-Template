@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
 
-import '../../config/router/app_router.dart';
+import '../../router/app_router.dart';
 import '../../utils/context_extensions.dart';
 import 'nav_bar_logic.dart';
 
