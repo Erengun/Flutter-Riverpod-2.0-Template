@@ -19,7 +19,6 @@ abstract class NetworkModule {
   @preResolve
   Future<Dio> provideDio(GetStoreHelper getStoreHelper) {
     final Dio dio = Dio();
-    final String? token = getStoreHelper.getToken();
 
     dio
       ..options.baseUrl = Endpoints.baseUrl
@@ -30,7 +29,6 @@ abstract class NetworkModule {
       ..options.headers = {
         'Content-Type': 'application/json',
         'accept': 'text/plain',
-        'Authorization': 'Bearer $token',
       }
       ..interceptors.add(LogInterceptor(
         request: false,
