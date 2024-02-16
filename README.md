@@ -50,6 +50,25 @@ comments with documentation and examples.
 The examples can be found by searching for "Example:"
 inside the project files.
 
+### Feature-First Folder structure
+
+```
+‣ lib
+  ‣ common
+  ‣ config
+  ‣ constants
+  ‣ data
+  ‣ di
+  ‣ exceptions
+  ‣ features
+    ‣ home
+    ‣ info
+    ‣ ...
+  ‣ localization
+  ‣ routing
+  ‣ utils
+```
+
 ### Changing the package and app name
 
 You can follow the instructions in this [Stackoverflow issue](https://stackoverflow.com/a/51550358).

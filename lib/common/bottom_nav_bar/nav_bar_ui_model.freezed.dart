@@ -12,7 +12,7 @@ part of 'nav_bar_ui_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 BottomNavBarUiModel _$BottomNavBarUiModelFromJson(Map<String, dynamic> json) {
   return _BottomNavBarUiModel.fromJson(json);
@@ -62,22 +62,22 @@ class _$BottomNavBarUiModelCopyWithImpl<$Res, $Val extends BottomNavBarUiModel>
 }
 
 /// @nodoc
-abstract class _$$_BottomNavBarUiModelCopyWith<$Res>
+abstract class _$$BottomNavBarUiModelImplCopyWith<$Res>
     implements $BottomNavBarUiModelCopyWith<$Res> {
-  factory _$$_BottomNavBarUiModelCopyWith(_$_BottomNavBarUiModel value,
-          $Res Function(_$_BottomNavBarUiModel) then) =
-      __$$_BottomNavBarUiModelCopyWithImpl<$Res>;
+  factory _$$BottomNavBarUiModelImplCopyWith(_$BottomNavBarUiModelImpl value,
+          $Res Function(_$BottomNavBarUiModelImpl) then) =
+      __$$BottomNavBarUiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int navIndex});
 }
 
 /// @nodoc
-class __$$_BottomNavBarUiModelCopyWithImpl<$Res>
-    extends _$BottomNavBarUiModelCopyWithImpl<$Res, _$_BottomNavBarUiModel>
-    implements _$$_BottomNavBarUiModelCopyWith<$Res> {
-  __$$_BottomNavBarUiModelCopyWithImpl(_$_BottomNavBarUiModel _value,
-      $Res Function(_$_BottomNavBarUiModel) _then)
+class __$$BottomNavBarUiModelImplCopyWithImpl<$Res>
+    extends _$BottomNavBarUiModelCopyWithImpl<$Res, _$BottomNavBarUiModelImpl>
+    implements _$$BottomNavBarUiModelImplCopyWith<$Res> {
+  __$$BottomNavBarUiModelImplCopyWithImpl(_$BottomNavBarUiModelImpl _value,
+      $Res Function(_$BottomNavBarUiModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$_BottomNavBarUiModelCopyWithImpl<$Res>
   $Res call({
     Object? navIndex = null,
   }) {
-    return _then(_$_BottomNavBarUiModel(
+    return _then(_$BottomNavBarUiModelImpl(
       navIndex: null == navIndex
           ? _value.navIndex
           : navIndex // ignore: cast_nullable_to_non_nullable
@@ -96,11 +96,11 @@ class __$$_BottomNavBarUiModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_BottomNavBarUiModel implements _BottomNavBarUiModel {
-  const _$_BottomNavBarUiModel({this.navIndex = 0});
+class _$BottomNavBarUiModelImpl implements _BottomNavBarUiModel {
+  const _$BottomNavBarUiModelImpl({this.navIndex = 0});
 
-  factory _$_BottomNavBarUiModel.fromJson(Map<String, dynamic> json) =>
-      _$$_BottomNavBarUiModelFromJson(json);
+  factory _$BottomNavBarUiModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BottomNavBarUiModelImplFromJson(json);
 
   @override
   @JsonKey()
@@ -112,10 +112,10 @@ class _$_BottomNavBarUiModel implements _BottomNavBarUiModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_BottomNavBarUiModel &&
+            other is _$BottomNavBarUiModelImpl &&
             (identical(other.navIndex, navIndex) ||
                 other.navIndex == navIndex));
   }
@@ -127,13 +127,13 @@ class _$_BottomNavBarUiModel implements _BottomNavBarUiModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BottomNavBarUiModelCopyWith<_$_BottomNavBarUiModel> get copyWith =>
-      __$$_BottomNavBarUiModelCopyWithImpl<_$_BottomNavBarUiModel>(
+  _$$BottomNavBarUiModelImplCopyWith<_$BottomNavBarUiModelImpl> get copyWith =>
+      __$$BottomNavBarUiModelImplCopyWithImpl<_$BottomNavBarUiModelImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BottomNavBarUiModelToJson(
+    return _$$BottomNavBarUiModelImplToJson(
       this,
     );
   }
@@ -141,15 +141,15 @@ class _$_BottomNavBarUiModel implements _BottomNavBarUiModel {
 
 abstract class _BottomNavBarUiModel implements BottomNavBarUiModel {
   const factory _BottomNavBarUiModel({final int navIndex}) =
-      _$_BottomNavBarUiModel;
+      _$BottomNavBarUiModelImpl;
 
   factory _BottomNavBarUiModel.fromJson(Map<String, dynamic> json) =
-      _$_BottomNavBarUiModel.fromJson;
+      _$BottomNavBarUiModelImpl.fromJson;
 
   @override
   int get navIndex;
   @override
   @JsonKey(ignore: true)
-  _$$_BottomNavBarUiModelCopyWith<_$_BottomNavBarUiModel> get copyWith =>
+  _$$BottomNavBarUiModelImplCopyWith<_$BottomNavBarUiModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
