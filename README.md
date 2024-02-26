@@ -406,3 +406,6 @@ The easiest way to contribute is to add more language support for the localizati
 
 ## License
 Project is published under the [MIT license](./LICENSE.md). Feel free to clone and modify repo as you want, but don't forget to add reference to authors :)
+
+## How To Reach Me
+https://www.erengun.dev
