@@ -1,4 +1,4 @@
-module github.com/Erengun/Flutter-Riverpod-2.0-Template
+module github.com/Erengun/Flutter-Riverpod-2.0-Template/cli
 
 go 1.22.3
 
