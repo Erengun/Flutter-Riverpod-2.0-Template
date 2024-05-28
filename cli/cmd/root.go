@@ -14,13 +14,13 @@ import (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "init",
+	Use:   "template",
 	Short: "Cli tool to change app name, package name, and other configurations to get started with Flutter Riverpod 2.0 Template.",
 	Long: `
 Cli tool to change app name, package name, and other configurations to get started with Flutter Riverpod 2.0 Template.
 When you run this command, it will ask you for the new app name, package name, and other configurations.
 After you provide the required information, it will update the configurations and rename the files accordingly.
-Write 'init' in the terminal to start the process.
+Write 'template init' in the terminal to start the process.
 `,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
