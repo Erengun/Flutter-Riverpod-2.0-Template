@@ -60,7 +60,6 @@ dependencies:
   flex_color_scheme: ^7.1.2
   json_editor: ^0.0.8
   liquid_pull_to_refresh: ^3.0.1
-  change_app_package_name: ^1.1.0
   url_launcher: ^6.1.11
   intl: ^0.18.0
   flutter_html: ^3.0.0-beta.2
