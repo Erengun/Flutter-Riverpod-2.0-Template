@@ -9,11 +9,13 @@ import (
 	"os/exec"
 	"strconv"
 	"fmt"
+	"time"
 
 	"github.com/manifoldco/promptui"
 
 	"github.com/spf13/cobra"
 )
+
 
 
 type PlainFormatter struct {
@@ -221,10 +223,18 @@ Write 'template init' in the terminal to start the process.
 		if _, err := os.Stat("pubspec.yaml"); os.IsNotExist(err) {
 			// If not a Flutter project, show error message and exit
 			// log.Debug("Not a Flutter project")
+			log.Fatal("Not a Flutter project. Please run this command in a Flutter project directory.")
 			return
 		}
-		// log.Debug("Flutter project detected. Running flutter pub get to get the dependencies.")
+		log.Debug("Flutter project detected. Running flutter pub get to get the dependencies.")
+
+
+		log.Info("Welcome to the template CLI. This command will help you update the app name, package name, app icon, and splash screen.")
+
+		stopChan := make(chan struct{})
+		go LoadingSpinner(stopChan, "Getting Dependencies...")
 		// If Flutter project, run flutter pub get to get the dependencies
+		log.Debug("Running flutter pub get to get the dependencies.")
 		_, err = exec.Command("flutter", "pub", "get").Output()
 		if err != nil {
 			log.Debug("Failed to run flutter pub get:", err)
@@ -245,6 +255,8 @@ Write 'template init' in the terminal to start the process.
 			return
 		}
 
+		close(stopChan)
+
 		updateAppNameAndPackageName()
 
 		ans := promptGetSelect(promptContent{
@@ -258,6 +270,65 @@ Write 'template init' in the terminal to start the process.
 		log.Debug("All configurations updated successfully.")
 
 	},
+}
+
+func LoadingSpinner(stopChan chan struct{}, msg string) {
+	/*
+	"▐⠂       ▌",
+			"▐⠈       ▌",
+			"▐ ⠂      ▌",
+			"▐ ⠠      ▌",
+			"▐  ⡀     ▌",
+			"▐  ⠠     ▌",
+			"▐   ⠂    ▌",
+			"▐   ⠈    ▌",
+			"▐    ⠂   ▌",
+			"▐    ⠠   ▌",
+			"▐     ⡀  ▌",
+			"▐     ⠠  ▌",
+			"▐      ⠂ ▌",
+			"▐      ⠈ ▌",
+			"▐       ⠂▌",
+			"▐       ⠠▌",
+			"▐       ⡀▌",
+			"▐      ⠠ ▌",
+			"▐      ⠂ ▌",
+			"▐     ⠈  ▌",
+			"▐     ⠂  ▌",
+			"▐    ⠠   ▌",
+			"▐    ⡀   ▌",
+			"▐   ⠠    ▌",
+			"▐   ⠂    ▌",
+			"▐  ⠈     ▌",
+			"▐  ⠂     ▌",
+			"▐ ⠠      ▌",
+			"▐ ⡀      ▌",
+			"▐⠠       ▌"
+	*/
+    spinner := []string{
+		"010010",
+		"001100",
+		"100101",
+		"111010",
+		"111101",
+		"010111",
+		"101011",
+		"111000",
+		"110011",
+		"110101",
+	}
+
+    i := 0
+    for {
+        select {
+        case <-stopChan:
+            return
+        default:
+			fmt.Printf("\r%s \033[32m%s\033[0m", msg, spinner[i])
+            i = (i + 1) % len(spinner)
+            time.Sleep(150 * time.Millisecond)
+        }
+    }
 }
 
 func init() {
