@@ -61,7 +61,7 @@ dependencies:
   json_editor: ^0.0.8
   liquid_pull_to_refresh: ^3.0.1
   url_launcher: ^6.1.11
-  intl: ^0.18.0
+  intl: ^0.19.0
   flutter_html: ^3.0.0-beta.2
   swipeable_tile: ^2.0.0+3
   flutter_swipe_action_cell: ^3.1.2
