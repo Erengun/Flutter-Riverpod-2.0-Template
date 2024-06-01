@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"github.com/manifoldco/promptui"
 	"os"
+	"github.com/manifoldco/promptui"
 )
 
 type promptContent struct {
@@ -51,8 +51,8 @@ func promptGetSelect(pc promptContent) string {
 
 	for index < 0 {
 		prompt := promptui.Select{
-			Label:   pc.label,
-			Items:   items,
+			Label:     pc.label,
+			Items:     items,
 			Templates: templates,
 		}
 
@@ -64,12 +64,10 @@ func promptGetSelect(pc promptContent) string {
 	}
 
 	if err != nil {
-		//fmt.Printf("Prompt failed %v\n", err)
-		os.Exit(1)
+		panic("Prompt failed")
 	}
 
 	//fmt.Printf("Input: %s\n", result)
 
 	return result
 }
-
