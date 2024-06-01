@@ -4,14 +4,13 @@ Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	log "github.com/sirupsen/logrus"
+	"fmt"
 	"os"
 	"os/exec"
-	"fmt"
+
+	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
-
-
 
 type PlainFormatter struct {
 }
@@ -30,7 +29,14 @@ func toggleDebug(cmd *cobra.Command, args []string) {
 	}
 }
 
+type Id int64
 
+const (
+	UpdateAppName Id = iota
+	UpdatePackageName
+	UpdateAppIcon
+	Done
+)
 
 // initCmd represents the init command
 var initCmd = &cobra.Command{
@@ -43,12 +49,12 @@ Write 'template init' in the terminal to start the process.
 	`,
 	PreRun: toggleDebug,
 	Run: func(cmd *cobra.Command, args []string) {
-		// log.Debug("init called")
+		// Clear the terminal
+		os.Stdout.WriteString("\x1b[3;J\x1b[H\x1b[2J")
 		// Go to project root directory ../
 		err := os.Chdir("..")
 		if err != nil {
-			// log.Debug("Failed to change directory:", err)
-			return
+			log.Fatal("Failed to change directory:", err)
 		}
 		// Check if the project is a Flutter project
 		if _, err := os.Stat("pubspec.yaml"); os.IsNotExist(err) {
@@ -59,7 +65,6 @@ Write 'template init' in the terminal to start the process.
 		}
 		log.Debug("Flutter project detected. Running flutter pub get to get the dependencies.")
 
-
 		log.Info("Welcome to the template CLI. This command will help you update the app name, package name, app icon, and splash screen.")
 
 		stopChan := make(chan struct{})
@@ -68,34 +73,42 @@ Write 'template init' in the terminal to start the process.
 		log.Debug("Running flutter pub get to get the dependencies.")
 		_, err = exec.Command("flutter", "pub", "get").Output()
 		if err != nil {
-			log.Debug("Failed to run flutter pub get:", err)
-			return
+			log.Fatal("Failed to run flutter pub get:", err)
 		}
 		// Run flutter pub add rename_app
 		log.Debug("Adding rename_app package to the project.")
 		_, err = exec.Command("flutter", "pub", "add", "rename_app").Output()
 		if err != nil {
-			log.Debug("Failed to add rename_app package:", err)
-			return
+			log.Fatal("Failed to add rename_app package:", err)
 		}
 
 		log.Debug("Adding change_app_package_name package to the project.")
 		_, err = exec.Command("flutter", "pub", "add", "change_app_package_name", "--dev").Output()
 		if err != nil {
-			log.Debug("Failed to add change_app_package_name package:", err)
-			return
+			log.Fatal("Failed to add change_app_package_name package:", err)
 		}
 
 		close(stopChan)
 
-		updateAppNameAndPackageName()
-
-		ans := promptGetSelect(promptContent{
-			label:   "Do you want to update the app icon and splash screen?: ",
-			choices: []string{"yes", "no"},
-		})
-		if ans == "yes" {
-			updateAppIconAndSplashScreen()
+		Actions:
+		action := promptGetSelect(
+			promptContent{
+				label:   "What do you want to update?",
+				choices: []string{"App Name", "Package Name", "App Icon", "Done"},
+			},
+		)
+		switch action {
+		case "App Name":
+			updateAppName()
+			goto Actions
+		case "Package Name":
+			updatePackageName()
+			goto Actions
+		case "App Icon":
+			updateAppIcon()
+			goto Actions
+		case "Done":
+			break
 		}
 
 		fmt.Print("All configurations updated successfully.")
@@ -106,7 +119,7 @@ Write 'template init' in the terminal to start the process.
 
 func cleanUp() {
 	stopChan := make(chan struct{})
-	LoadingSpinner(stopChan, "Cleaning up...")
+	go LoadingSpinner(stopChan, "Cleaning up...")
 	// Run flutter pub get
 	log.Debug("Removing change_app_package_name package from the project.")
 	_, err := exec.Command("flutter", "pub", "remove", "change_app_package_name").Output()
@@ -122,7 +135,6 @@ func cleanUp() {
 	}
 	close(stopChan)
 }
-
 
 func init() {
 	rootCmd.AddCommand(initCmd)
