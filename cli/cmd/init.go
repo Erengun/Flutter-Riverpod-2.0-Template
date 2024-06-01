@@ -7,11 +7,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	"os"
 	"os/exec"
-	"strconv"
 	"fmt"
-
-	"github.com/manifoldco/promptui"
-
 	"github.com/spf13/cobra"
 )
 
@@ -34,171 +30,7 @@ func toggleDebug(cmd *cobra.Command, args []string) {
 	}
 }
 
-type promptContent struct {
-	label string
-	// Optional choices for the select prompt
-	choices []string
-}
 
-func promptGetInput(content string) string {
-	pc := promptContent{label: content}
-	templates := &promptui.PromptTemplates{
-		Prompt:  "{{ . }} ",
-		Valid:   "{{ . | green }} ",
-		Invalid: "{{ . | red }} ",
-		Success: "{{ . | bold }} ",
-	}
-
-	prompt := promptui.Prompt{
-		Label:     pc.label,
-		Templates: templates,
-	}
-
-	result, err := prompt.Run()
-	if err != nil {
-		// log.Printf("Prompt failed %v\n", err)
-		os.Exit(1)
-	}
-
-	// log.Printf("Input: %s\n", result)
-
-	return result
-}
-
-func promptGetSelect(pc promptContent) string {
-	items := pc.choices
-	index := -1
-	var result string
-	var err error
-
-	var templates = &promptui.SelectTemplates{
-		Label:    "{{ . }}?",
-		Active:   "\U0001F355 {{ . | cyan }}",
-		Inactive: "  {{ . | cyan }}",
-		Selected: "\U0001F355 {{ . | red | cyan }}",
-	}
-
-	for index < 0 {
-		prompt := promptui.Select{
-			Label:   pc.label,
-			Items:   items,
-			Templates: templates,
-		}
-
-		index, result, err = prompt.Run()
-
-		if index == -1 {
-			items = append(items, result)
-		}
-	}
-
-	if err != nil {
-		//fmt.Printf("Prompt failed %v\n", err)
-		os.Exit(1)
-	}
-
-	//fmt.Printf("Input: %s\n", result)
-
-	return result
-}
-
-func updateAppNameAndPackageName() {
-	var err error
-	var appName string
-	var packageName string
-	appName = promptGetInput("Enter the new app name (eg: My App). Empty to skip :")
-	packageName = promptGetInput("Enter the new package name (eg: com.example.myapp). Empty to skip :")
-	// flutter pub run rename_app:main all="My App Name"
-	if appName != "" {
-		_, err = exec.Command("flutter", "pub", "run", "rename_app:main", "all="+appName).Output()
-		if err != nil {
-			log.Fatalln(err)
-			return
-		}
-		log.Debug("App name updated successfully.")
-	} else {
-		log.Debug("Skipping app name update.")
-	}
-
-	// flutter pub run change_app_package_name:main com.new.package.name
-	if packageName != "" {
-		_, err := exec.Command("flutter", "pub", "run", "change_app_package_name:main", packageName).Output()
-		if err != nil {
-			log.Fatalln(err)
-			return
-		}
-		log.Debug("Package name updated successfully.")
-	} else {
-		log.Debug("Skipping package name update.")
-	}
-
-	// log.Printf("App %s with package name %s updated successfully.\n", appName, packageName)
-}
-
-func updateAppIconAndSplashScreen() {
-	var err error
-	var iconPath string
-	var android bool
-	var ios bool
-
-	// Run flutter pub add flutter_launcher_icons
-	// log.Debug("Adding flutter_launcher_icons package to the project.")
-	_, err = exec.Command("flutter", "pub", "add", "flutter_launcher_icons").Output()
-	if err != nil {
-		// log.Debug("Failed to add flutter_launcher_icons package:", err)
-		return
-	}
-	iconPath = promptGetInput("Enter the path to the icon file (eg: icon/path/here.png) : ")
-	ans := promptGetSelect(promptContent{
-		label:   "Do you want to update the android icon? (yes/no): ",
-		choices: []string{"yes", "no"},
-	})
-	if ans == "yes" {
-		android = true
-	} else {
-		android = false
-	}
-	ans = promptGetSelect(promptContent{
-		label:   "Do you want to update the ios icon? (yes/no): ",
-		choices: []string{"yes", "no"},
-	})
-	if ans == "yes" {
-		ios = true
-	} else {
-		ios = false
-	}
-
-	// Add your Flutter Launcher Icons configuration to your pubspec.yaml
-	flutterLauncherIconsConfig := `
-flutter_launcher_icons:
-	image_path_android: ` + iconPath + `
-	image_path_ios: ` + iconPath + `
-	android: ` + strconv.FormatBool(android) + `
-	ios: ` + strconv.FormatBool(ios) + `
-`
-	err = os.WriteFile("flutter_launcher_icons.yaml", []byte(flutterLauncherIconsConfig), 0644)
-	if err != nil {
-		// log.Debug("Failed to write Flutter Launcher Icons configuration to pubspec.yaml:", err)
-		return
-	}
-	// log.Debug("Flutter Launcher Icons configuration added to pubspec.yaml.")
-	// flutter pub get
-	// log.Debug("Running flutter pub get to get the dependencies.")
-	_, err = exec.Command("flutter", "pub", "get").Output()
-	if err != nil {
-		log.Fatal("Failed to run flutter pub get:", err)
-		return
-	}
-
-	// flutter pub run flutter_launcher_icons
-	// log.Debug("Running flutter pub run flutter_launcher_icons to update the app icon.")
-	_, err = exec.Command("flutter", "pub", "run", "flutter_launcher_icons", "-f", "flutter_launcher_icons.yaml").Output()
-	if err != nil {
-		// log.Debug("Failed to run flutter pub run flutter_launcher_icons:main:", err)
-		return
-	}
-	// log.Debug("App icon and splash screen updated successfully.")
-}
 
 // initCmd represents the init command
 var initCmd = &cobra.Command{
@@ -266,11 +98,30 @@ Write 'template init' in the terminal to start the process.
 			updateAppIconAndSplashScreen()
 		}
 
-		log.Debug("All configurations updated successfully.")
+		fmt.Print("All configurations updated successfully.")
+		cleanUp()
 
 	},
 }
 
+func cleanUp() {
+	stopChan := make(chan struct{})
+	LoadingSpinner(stopChan, "Cleaning up...")
+	// Run flutter pub get
+	log.Debug("Removing change_app_package_name package from the project.")
+	_, err := exec.Command("flutter", "pub", "remove", "change_app_package_name").Output()
+	if err != nil {
+		log.Debug("Failed to remove change_app_package_name package:", err)
+		return
+	}
+	log.Debug("Removing rename_app package from the project.")
+	_, err = exec.Command("flutter", "pub", "remove", "rename_app").Output()
+	if err != nil {
+		log.Debug("Failed to remove rename_app package:", err)
+		return
+	}
+	close(stopChan)
+}
 
 
 func init() {
