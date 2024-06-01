@@ -9,7 +9,6 @@ import (
 	"os/exec"
 	"strconv"
 	"fmt"
-	"time"
 
 	"github.com/manifoldco/promptui"
 
@@ -116,9 +115,9 @@ func updateAppNameAndPackageName() {
 			log.Fatalln(err)
 			return
 		}
-		// log.Debug("App name updated successfully.")
+		log.Debug("App name updated successfully.")
 	} else {
-		// log.Debug("Skipping app name update.")
+		log.Debug("Skipping app name update.")
 	}
 
 	// flutter pub run change_app_package_name:main com.new.package.name
@@ -128,9 +127,9 @@ func updateAppNameAndPackageName() {
 			log.Fatalln(err)
 			return
 		}
-		// log.Debug("Package name updated successfully.")
+		log.Debug("Package name updated successfully.")
 	} else {
-		// log.Debug("Skipping package name update.")
+		log.Debug("Skipping package name update.")
 	}
 
 	// log.Printf("App %s with package name %s updated successfully.\n", appName, packageName)
@@ -272,64 +271,7 @@ Write 'template init' in the terminal to start the process.
 	},
 }
 
-func LoadingSpinner(stopChan chan struct{}, msg string) {
-	/*
-	"▐⠂       ▌",
-			"▐⠈       ▌",
-			"▐ ⠂      ▌",
-			"▐ ⠠      ▌",
-			"▐  ⡀     ▌",
-			"▐  ⠠     ▌",
-			"▐   ⠂    ▌",
-			"▐   ⠈    ▌",
-			"▐    ⠂   ▌",
-			"▐    ⠠   ▌",
-			"▐     ⡀  ▌",
-			"▐     ⠠  ▌",
-			"▐      ⠂ ▌",
-			"▐      ⠈ ▌",
-			"▐       ⠂▌",
-			"▐       ⠠▌",
-			"▐       ⡀▌",
-			"▐      ⠠ ▌",
-			"▐      ⠂ ▌",
-			"▐     ⠈  ▌",
-			"▐     ⠂  ▌",
-			"▐    ⠠   ▌",
-			"▐    ⡀   ▌",
-			"▐   ⠠    ▌",
-			"▐   ⠂    ▌",
-			"▐  ⠈     ▌",
-			"▐  ⠂     ▌",
-			"▐ ⠠      ▌",
-			"▐ ⡀      ▌",
-			"▐⠠       ▌"
-	*/
-    spinner := []string{
-		"010010",
-		"001100",
-		"100101",
-		"111010",
-		"111101",
-		"010111",
-		"101011",
-		"111000",
-		"110011",
-		"110101",
-	}
 
-    i := 0
-    for {
-        select {
-        case <-stopChan:
-            return
-        default:
-			fmt.Printf("\r%s \033[32m%s\033[0m", msg, spinner[i])
-            i = (i + 1) % len(spinner)
-            time.Sleep(150 * time.Millisecond)
-        }
-    }
-}
 
 func init() {
 	rootCmd.AddCommand(initCmd)
