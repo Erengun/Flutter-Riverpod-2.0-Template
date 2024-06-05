@@ -28,7 +28,9 @@ func init() {
 		log.Fatal("Error opening file:", err)
 		return
 	}
-	defer file.Close()
+	defer func(file *os.File) {
+		_ = file.Close()
+	}(file)
 
 	// Read file contents
 	byteValue, err := io.ReadAll(file)

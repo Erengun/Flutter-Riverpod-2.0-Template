@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"os"
 	"github.com/manifoldco/promptui"
+	"os"
 )
 
 type promptContent struct {

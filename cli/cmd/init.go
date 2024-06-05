@@ -1,6 +1,7 @@
 /*
-Copyright © 2024 NAME HERE <EMAIL ADDRESS>
+Copyright © 2024 NAME HERE hi@erengun.dev
 */
+
 package cmd
 
 import (
@@ -18,7 +19,7 @@ type PlainFormatter struct {
 func (f *PlainFormatter) Format(entry *log.Entry) ([]byte, error) {
 	return []byte(fmt.Sprintf("%s\n", entry.Message)), nil
 }
-func toggleDebug(cmd *cobra.Command, args []string) {
+func toggleDebug(*cobra.Command, []string) {
 	if Debug {
 		log.Info("Debug logs enabled")
 		log.SetLevel(log.DebugLevel)
@@ -28,15 +29,6 @@ func toggleDebug(cmd *cobra.Command, args []string) {
 		log.SetFormatter(plainFormatter)
 	}
 }
-
-type Id int64
-
-const (
-	UpdateAppName Id = iota
-	UpdatePackageName
-	UpdateAppIcon
-	Done
-)
 
 // initCmd represents the init command
 var initCmd = &cobra.Command{
@@ -50,7 +42,10 @@ Write 'template init' in the terminal to start the process.
 	PreRun: toggleDebug,
 	Run: func(cmd *cobra.Command, args []string) {
 		// Clear the terminal
-		os.Stdout.WriteString("\x1b[3;J\x1b[H\x1b[2J")
+		_, stdErr := os.Stdout.WriteString("\x1b[3;J\x1b[H\x1b[2J")
+		if stdErr != nil {
+			return
+		}
 		// Go to project root directory ../
 		err := os.Chdir("..")
 		if err != nil {
@@ -90,7 +85,7 @@ Write 'template init' in the terminal to start the process.
 
 		close(stopChan)
 
-		Actions:
+	Actions:
 		action := promptGetSelect(
 			promptContent{
 				label:   "What do you want to update?",
