@@ -106,7 +106,6 @@ Write 'template init' in the terminal to start the process.
 			break
 		}
 
-		fmt.Print("All configurations updated successfully.")
 		cleanUp()
 
 	},
