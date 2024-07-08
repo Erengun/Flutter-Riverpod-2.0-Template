@@ -50,6 +50,60 @@ comments with documentation and examples.
 The examples can be found by searching for "Example:"
 inside the project files.
 
+### Installation
+
+1. Use this template to create a new repository.
+2. Clone the repository to your local machine.
+3. Run `flutter pub get` to install the dependencies.
+4. Run `dart run build_runner build` to generate the providers.
+5. Run the cli command `dart run rider init` to initialize the project.
+
+### Rider CLI
+
+The Rider CLI is a command line interface that helps you save time to change the package and app name and app icon. It also helps you to initialize the project. You can run the following commands:
+
+```bash
+dart run rider init
+```
+
+
+### Changing the package and app name
+
+You can follow the instructions in this [Stackoverflow issue](https://stackoverflow.com/a/51550358).
+
+or
+
+You can use the Rider CLI to change the package and app name. Just run the rider cli:
+
+```bash
+dart run rider init
+```
+
+Select App Name and Package Name and follow the instructions.
+
+![Rider CLI](./assets/img/rider_cli.png "Rider CLI")
+
+#### Changing the app name
+
+![Rider CLI](./assets/img/change_app_name.png "Rider CLI")
+
+#### Changing the package name
+
+![Rider CLI](./assets/img/change_package_name.png "Rider CLI")
+
+### Changing the app icon
+
+Import your icon to the [assets](./assets) folder. Then run the Rider CLI:
+
+```bash
+dart run rider init
+```
+
+Enter the relative path to the icon and follow the instructions.
+
+![Rider CLI](./assets/img/change_app_icon.png "Rider CLI")
+
+
 ### Feature-First Folder structure
 
 ```
@@ -69,9 +123,6 @@ inside the project files.
   ‣ utils
 ```
 
-### Changing the package and app name
-
-You can follow the instructions in this [Stackoverflow issue](https://stackoverflow.com/a/51550358).
 
 ### State management
 
