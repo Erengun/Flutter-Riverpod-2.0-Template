@@ -37,8 +37,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_riverpod: ^2.3.6
   riverpod: ^2.3.6
-  hooks_riverpod: ^2.3.6
-  flutter_hooks: ^0.20.3
   dio: ^5.2.1+1
   equatable: ^2.0.5
   freezed_annotation: ^2.2.0
@@ -58,15 +56,12 @@ dependencies:
   connectivity_plus: ^6.0.2
   responsive_builder: ^0.7.0
   flex_color_scheme: ^7.1.2
-  json_editor: ^0.0.8
   liquid_pull_to_refresh: ^3.0.1
   url_launcher: ^6.1.11
   intl: ^0.19.0
   flutter_html: ^3.0.0-beta.2
-  swipeable_tile: ^2.0.0+3
   flutter_swipe_action_cell: ^3.1.2
   stack_trace: ^1.11.0
-  animated_notch_bottom_bar: ^1.0.0
   water_drop_nav_bar: ^2.2.0+5
 
 
