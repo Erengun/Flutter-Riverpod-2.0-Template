@@ -24,9 +24,9 @@ This repository makes use of the following pub packages:
 | [Flutter Riverpod](https://pub.dev/packages/flutter_riverpod)       | ^2.3.6  | State management*                  |
 | [Riverpod Annotation](https://pub.dev/packages/riverpod)            | ^1.0.3  | State management*                  |
 | [Freezed Annotation](https://pub.dev/packages/freezed_annotation)                         | ^0.14.2 | Immutable state*                   |
-| [Go Router](https://pub.dev/packages/go_router)                     | ^2.1.0  | Routing                            |
+| [Go Router](https://pub.dev/packages/go_router)                     | ^14.0.2  | Routing                            |
 | [Get It](https://pub.dev/packages/get_it)                           | ^7.2.0  | Dependency injection*              |
-| [Flutter Lints](https://pub.dev/packages/flutter_lints)             | ^2.0.1  | Stricter linting rules             |
+| [Flutter Lints](https://pub.dev/packages/flutter_lints)             | ^4.0.0  | Stricter linting rules             |
 | [Path Provider](https://pub.dev/packages/path_provider)             | ^2.0.11 | Get the save path for Hive         |
 | [Flutter Displaymode](https://pub.dev/packages/flutter_displaymode) | ^0.5.0  | Support high refresh rate displays |
 | [Easy Localization](https://pub.dev/packages/easy_localization)     | ^3.0.1  | Makes localization easy            |
