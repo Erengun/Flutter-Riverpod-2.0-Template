@@ -20,7 +20,7 @@ class HomeScreen extends ConsumerWidget {
     return Scaffold(
       appBar: const EmptyAppBar(),
       bottomNavigationBar: const BottomNavBar(),
-      backgroundColor: context.colorScheme.background,
+      backgroundColor: context.colorScheme.surface,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -21,7 +21,7 @@ class BottomNavBar extends ConsumerWidget {
       padding: const EdgeInsets.only(bottom: 8),
       child: WaterDropNavBar(
         key: const Key('bottom_nav_bar'),
-        backgroundColor: context.colorScheme.background,
+        backgroundColor: context.colorScheme.surface,
         waterDropColor: context.colorScheme.primary,
         selectedIndex: nav.navIndex,
         onItemSelected: (int index) {
