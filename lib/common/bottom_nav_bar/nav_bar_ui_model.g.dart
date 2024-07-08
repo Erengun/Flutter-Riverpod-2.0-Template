@@ -9,7 +9,7 @@ part of 'nav_bar_ui_model.dart';
 _$BottomNavBarUiModelImpl _$$BottomNavBarUiModelImplFromJson(
         Map<String, dynamic> json) =>
     _$BottomNavBarUiModelImpl(
-      navIndex: json['navIndex'] as int? ?? 0,
+      navIndex: (json['navIndex'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$BottomNavBarUiModelImplToJson(

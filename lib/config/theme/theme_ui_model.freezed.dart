@@ -12,7 +12,7 @@ part of 'theme_ui_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ThemeUiModel _$ThemeUiModelFromJson(Map<String, dynamic> json) {
   return _ThemeUiModel.fromJson(json);
@@ -62,22 +62,22 @@ class _$ThemeUiModelCopyWithImpl<$Res, $Val extends ThemeUiModel>
 }
 
 /// @nodoc
-abstract class _$$_ThemeUiModelCopyWith<$Res>
+abstract class _$$ThemeUiModelImplCopyWith<$Res>
     implements $ThemeUiModelCopyWith<$Res> {
-  factory _$$_ThemeUiModelCopyWith(
-          _$_ThemeUiModel value, $Res Function(_$_ThemeUiModel) then) =
-      __$$_ThemeUiModelCopyWithImpl<$Res>;
+  factory _$$ThemeUiModelImplCopyWith(
+          _$ThemeUiModelImpl value, $Res Function(_$ThemeUiModelImpl) then) =
+      __$$ThemeUiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({ThemeMode themeMode});
 }
 
 /// @nodoc
-class __$$_ThemeUiModelCopyWithImpl<$Res>
-    extends _$ThemeUiModelCopyWithImpl<$Res, _$_ThemeUiModel>
-    implements _$$_ThemeUiModelCopyWith<$Res> {
-  __$$_ThemeUiModelCopyWithImpl(
-      _$_ThemeUiModel _value, $Res Function(_$_ThemeUiModel) _then)
+class __$$ThemeUiModelImplCopyWithImpl<$Res>
+    extends _$ThemeUiModelCopyWithImpl<$Res, _$ThemeUiModelImpl>
+    implements _$$ThemeUiModelImplCopyWith<$Res> {
+  __$$ThemeUiModelImplCopyWithImpl(
+      _$ThemeUiModelImpl _value, $Res Function(_$ThemeUiModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$_ThemeUiModelCopyWithImpl<$Res>
   $Res call({
     Object? themeMode = null,
   }) {
-    return _then(_$_ThemeUiModel(
+    return _then(_$ThemeUiModelImpl(
       themeMode: null == themeMode
           ? _value.themeMode
           : themeMode // ignore: cast_nullable_to_non_nullable
@@ -96,11 +96,11 @@ class __$$_ThemeUiModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ThemeUiModel implements _ThemeUiModel {
-  const _$_ThemeUiModel({this.themeMode = ThemeMode.system});
+class _$ThemeUiModelImpl implements _ThemeUiModel {
+  const _$ThemeUiModelImpl({this.themeMode = ThemeMode.system});
 
-  factory _$_ThemeUiModel.fromJson(Map<String, dynamic> json) =>
-      _$$_ThemeUiModelFromJson(json);
+  factory _$ThemeUiModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ThemeUiModelImplFromJson(json);
 
   @override
   @JsonKey()
@@ -112,10 +112,10 @@ class _$_ThemeUiModel implements _ThemeUiModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ThemeUiModel &&
+            other is _$ThemeUiModelImpl &&
             (identical(other.themeMode, themeMode) ||
                 other.themeMode == themeMode));
   }
@@ -127,27 +127,27 @@ class _$_ThemeUiModel implements _ThemeUiModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ThemeUiModelCopyWith<_$_ThemeUiModel> get copyWith =>
-      __$$_ThemeUiModelCopyWithImpl<_$_ThemeUiModel>(this, _$identity);
+  _$$ThemeUiModelImplCopyWith<_$ThemeUiModelImpl> get copyWith =>
+      __$$ThemeUiModelImplCopyWithImpl<_$ThemeUiModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ThemeUiModelToJson(
+    return _$$ThemeUiModelImplToJson(
       this,
     );
   }
 }
 
 abstract class _ThemeUiModel implements ThemeUiModel {
-  const factory _ThemeUiModel({final ThemeMode themeMode}) = _$_ThemeUiModel;
+  const factory _ThemeUiModel({final ThemeMode themeMode}) = _$ThemeUiModelImpl;
 
   factory _ThemeUiModel.fromJson(Map<String, dynamic> json) =
-      _$_ThemeUiModel.fromJson;
+      _$ThemeUiModelImpl.fromJson;
 
   @override
   ThemeMode get themeMode;
   @override
   @JsonKey(ignore: true)
-  _$$_ThemeUiModelCopyWith<_$_ThemeUiModel> get copyWith =>
+  _$$ThemeUiModelImplCopyWith<_$ThemeUiModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

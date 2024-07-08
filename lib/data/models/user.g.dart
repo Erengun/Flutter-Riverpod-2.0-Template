@@ -6,17 +6,17 @@ part of 'user.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class UserModelAdapter extends TypeAdapter<_$_UserModel> {
+class UserModelAdapter extends TypeAdapter<_$UserModelImpl> {
   @override
   final int typeId = 0;
 
   @override
-  _$_UserModel read(BinaryReader reader) {
+  _$UserModelImpl read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return _$_UserModel(
+    return _$UserModelImpl(
       id: fields[0] as String,
       name: fields[1] as String,
       email: fields[2] as String,
@@ -26,7 +26,7 @@ class UserModelAdapter extends TypeAdapter<_$_UserModel> {
   }
 
   @override
-  void write(BinaryWriter writer, _$_UserModel obj) {
+  void write(BinaryWriter writer, _$UserModelImpl obj) {
     writer
       ..writeByte(5)
       ..writeByte(0)
@@ -56,19 +56,20 @@ class UserModelAdapter extends TypeAdapter<_$_UserModel> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_LoginResponse _$$_LoginResponseFromJson(Map<String, dynamic> json) =>
-    _$_LoginResponse(
+_$LoginResponseImpl _$$LoginResponseImplFromJson(Map<String, dynamic> json) =>
+    _$LoginResponseImpl(
       token: json['token'] as String,
       user: UserModel.fromJson(json['user'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_LoginResponseToJson(_$_LoginResponse instance) =>
+Map<String, dynamic> _$$LoginResponseImplToJson(_$LoginResponseImpl instance) =>
     <String, dynamic>{
       'token': instance.token,
       'user': instance.user,
     };
 
-_$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
+_$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
+    _$UserModelImpl(
       id: json['_id'] as String,
       name: json['name'] as String,
       email: json['email'] as String,
@@ -76,7 +77,7 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       verified: json['verified'] as bool,
     );
 
-Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
+Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
     <String, dynamic>{
       '_id': instance.id,
       'name': instance.name,

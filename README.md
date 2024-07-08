@@ -24,9 +24,9 @@ This repository makes use of the following pub packages:
 | [Flutter Riverpod](https://pub.dev/packages/flutter_riverpod)       | ^2.3.6  | State management*                  |
 | [Riverpod Annotation](https://pub.dev/packages/riverpod)            | ^1.0.3  | State management*                  |
 | [Freezed Annotation](https://pub.dev/packages/freezed_annotation)                         | ^0.14.2 | Immutable state*                   |
-| [Go Router](https://pub.dev/packages/go_router)                     | ^2.1.0  | Routing                            |
+| [Go Router](https://pub.dev/packages/go_router)                     | ^14.0.2  | Routing                            |
 | [Get It](https://pub.dev/packages/get_it)                           | ^7.2.0  | Dependency injection*              |
-| [Flutter Lints](https://pub.dev/packages/flutter_lints)             | ^2.0.1  | Stricter linting rules             |
+| [Flutter Lints](https://pub.dev/packages/flutter_lints)             | ^4.0.0  | Stricter linting rules             |
 | [Path Provider](https://pub.dev/packages/path_provider)             | ^2.0.11 | Get the save path for Hive         |
 | [Flutter Displaymode](https://pub.dev/packages/flutter_displaymode) | ^0.5.0  | Support high refresh rate displays |
 | [Easy Localization](https://pub.dev/packages/easy_localization)     | ^3.0.1  | Makes localization easy            |
@@ -50,6 +50,60 @@ comments with documentation and examples.
 The examples can be found by searching for "Example:"
 inside the project files.
 
+### Installation
+
+1. Use this template to create a new repository.
+2. Clone the repository to your local machine.
+3. Run `flutter pub get` to install the dependencies.
+4. Run `dart run build_runner build` to generate the providers.
+5. Run the cli command `dart run rider init` to initialize the project.
+
+### Rider CLI
+
+The Rider CLI is a command line interface that helps you save time to change the package and app name and app icon. It also helps you to initialize the project. You can run the following commands:
+
+```bash
+dart run rider init
+```
+
+
+### Changing the package and app name
+
+You can follow the instructions in this [Stackoverflow issue](https://stackoverflow.com/a/51550358).
+
+or
+
+You can use the Rider CLI to change the package and app name. Just run the rider cli:
+
+```bash
+dart run rider init
+```
+
+Select App Name and Package Name and follow the instructions.
+
+![Rider CLI](./assets/img/rider_cli.png "Rider CLI")
+
+#### Changing the app name
+
+![Rider CLI](./assets/img/change_app_name.png "Rider CLI")
+
+#### Changing the package name
+
+![Rider CLI](./assets/img/change_package_name.png "Rider CLI")
+
+### Changing the app icon
+
+Import your icon to the [assets](./assets) folder. Then run the Rider CLI:
+
+```bash
+dart run rider init
+```
+
+Enter the relative path to the icon and follow the instructions.
+
+![Rider CLI](./assets/img/change_app_icon.png "Rider CLI")
+
+
 ### Feature-First Folder structure
 
 ```
@@ -69,9 +123,6 @@ inside the project files.
   ‣ utils
 ```
 
-### Changing the package and app name
-
-You can follow the instructions in this [Stackoverflow issue](https://stackoverflow.com/a/51550358).
 
 ### State management
 
