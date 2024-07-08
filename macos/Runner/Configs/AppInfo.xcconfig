@@ -8,7 +8,7 @@
 PRODUCT_NAME = template
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = dev.feichtinger.template
+PRODUCT_BUNDLE_IDENTIFIER = com.example.template
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2023 dev.feichtinger. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2024 com.example. All rights reserved.
