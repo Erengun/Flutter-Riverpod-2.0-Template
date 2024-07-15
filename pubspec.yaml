@@ -43,7 +43,7 @@ dependencies:
   riverpod_annotation: ^2.1.1
   hive: ^2.2.3
   retrofit: ^4.0.1
-  logger: ^1.4.0
+  logger: ^2.4.0
   injectable: ^2.1.2
   get_it: ^7.6.0
   hive_flutter: ^1.1.0
