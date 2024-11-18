@@ -55,7 +55,7 @@ dependencies:
   fpdart: ^1.1.0
   connectivity_plus: ^6.0.2
   responsive_builder: ^0.7.0
-  flex_color_scheme: ^7.1.2
+  flex_color_scheme: ^8.0.1
   liquid_pull_to_refresh: ^3.0.1
   url_launcher: ^6.1.11
   intl: ^0.19.0
