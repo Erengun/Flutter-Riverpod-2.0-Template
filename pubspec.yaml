@@ -80,7 +80,7 @@ dev_dependencies:
   json_serializable: ^6.7.0
   riverpod_generator: ^2.2.3
   riverpod_lint: ^2.3.2
-  retrofit_generator: ^8.0.3
+  retrofit_generator: ^9.1.5
   injectable_generator: ^2.1.6
   hive_generator: ^2.0.0
   freezed: ^2.3.5
