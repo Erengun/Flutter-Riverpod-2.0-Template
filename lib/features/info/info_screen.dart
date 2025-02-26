@@ -125,12 +125,6 @@ List<GridItem> packageList = <GridItem>[
     version: '5.2.1+1',
   ),
   GridItem(
-    title: 'equatable',
-    icon: Ionicons.checkmark_done_circle_outline,
-    url: Uri.parse('https://pub.dev/packages/equatable'),
-    version: '2.0.5',
-  ),
-  GridItem(
     title: 'retrofit',
     icon: Ionicons.build_outline,
     url: Uri.parse('https://pub.dev/packages/retrofit'),
@@ -207,11 +201,5 @@ List<GridItem> packageList = <GridItem>[
     icon: Ionicons.document_text_outline,
     url: Uri.parse('https://pub.dev/packages/json_editor'),
     version: '0.0.8',
-  ),
-  GridItem(
-    title: 'liquid_pull_to_refresh',
-    icon: Ionicons.refresh_outline,
-    url: Uri.parse('https://pub.dev/packages/liquid_pull_to_refresh'),
-    version: '3.0.1',
   ),
 ];
