@@ -22,8 +22,12 @@ BottomNavBarUiModel _$BottomNavBarUiModelFromJson(Map<String, dynamic> json) {
 mixin _$BottomNavBarUiModel {
   int get navIndex => throw _privateConstructorUsedError;
 
+  /// Serializes this BottomNavBarUiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BottomNavBarUiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BottomNavBarUiModelCopyWith<BottomNavBarUiModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +51,8 @@ class _$BottomNavBarUiModelCopyWithImpl<$Res, $Val extends BottomNavBarUiModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BottomNavBarUiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -80,6 +86,8 @@ class __$$BottomNavBarUiModelImplCopyWithImpl<$Res>
       $Res Function(_$BottomNavBarUiModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BottomNavBarUiModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -120,11 +128,13 @@ class _$BottomNavBarUiModelImpl implements _BottomNavBarUiModel {
                 other.navIndex == navIndex));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, navIndex);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BottomNavBarUiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BottomNavBarUiModelImplCopyWith<_$BottomNavBarUiModelImpl> get copyWith =>
@@ -148,8 +158,11 @@ abstract class _BottomNavBarUiModel implements BottomNavBarUiModel {
 
   @override
   int get navIndex;
+
+  /// Create a copy of BottomNavBarUiModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BottomNavBarUiModelImplCopyWith<_$BottomNavBarUiModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
