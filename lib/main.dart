@@ -12,7 +12,6 @@ import 'package:stack_trace/stack_trace.dart' as stack_trace;
 
 import 'constants/strings.dart';
 import 'data/hive/hive.dart';
-import 'data/hive/hive_helper.dart';
 import 'di/components/service_locator.dart';
 import 'my_app.dart';
 
@@ -26,7 +25,6 @@ void main() async {
   await initHive();
   await configureDependencies();
   await setPreferredOrientations();
-  getIt<HiveHelper>().initHive();
   if (!kIsWeb) {
     if (Platform.isAndroid) {
       await FlutterDisplayMode.setHighRefreshRate();
