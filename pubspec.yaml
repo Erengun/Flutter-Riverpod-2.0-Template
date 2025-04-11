@@ -57,6 +57,7 @@ dependencies:
   url_launcher: ^6.1.11
   intl: ^0.19.0
   stack_trace: ^1.11.0
+  google_fonts: ^6.2.1
 
 
 dev_dependencies:
@@ -93,6 +94,7 @@ flutter:
 
   assets:
     - assets/translations/
+    - assets/img/
 
   fonts:
     - family: Nunito

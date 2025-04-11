@@ -3,6 +3,7 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'config/theme/theme_logic.dart';
 import 'config/theme/theme_ui_model.dart';
@@ -31,13 +32,11 @@ class MyApp extends ConsumerWidget {
         blendLevel: 13,
         subThemesData: const FlexSubThemesData(
           blendOnLevel: 10,
-          blendOnColors: false,
-          useTextTheme: true,
           useM2StyleDividerInM3: true,
         ),
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
-        useMaterial3: true,
         swapLegacyOnMaterial3: true,
+        textTheme: GoogleFonts.robotoTextTheme(),
         // To use the Playground font, add GoogleFonts package and uncomment
         // fontFamily: GoogleFonts.notoSans().fontFamily,
       ),
@@ -47,15 +46,15 @@ class MyApp extends ConsumerWidget {
         blendLevel: 13,
         subThemesData: const FlexSubThemesData(
           blendOnLevel: 20,
-          useTextTheme: true,
           useM2StyleDividerInM3: true,
         ),
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
-        useMaterial3: true,
         swapLegacyOnMaterial3: true,
+        textTheme: GoogleFonts.robotoTextTheme(),
         // To use the Playground font, add GoogleFonts package and uncomment
         // fontFamily: GoogleFonts.notoSans().fontFamily,
       ),
+      
       themeMode: currentTheme.themeMode,
       debugShowCheckedModeBanner: false,
       localizationsDelegates: context.localizationDelegates,
