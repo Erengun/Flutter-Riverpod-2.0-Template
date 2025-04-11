@@ -6,10 +6,13 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../constants/endpoints.dart';
 import '../../utils/cachefor_extension.dart';
 
-part 'api_repository.g.dart';
+part 'network_repository.g.dart';
 
+/// A repository class that extends _$NetworkRepository to handle network-related operations.
+/// This class serves as an abstraction layer for managing network requests and responses,
+/// providing a clean interface for the rest of the application to interact with network data.
 @riverpod
-class ApiController extends _$ApiController {
+class NetworkRepository extends _$NetworkRepository {
   late final Dio dio;
 
   @override
