@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../constants/assets.dart';
+import 'auth_ui_model.dart';
+import 'login_controller.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -18,8 +20,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   void initState() {
     super.initState();
-    _emailController = TextEditingController();
-    _passwordController = TextEditingController();
+    _emailController = TextEditingController(
+      text: ref.read(loginControllerProvider).email,
+    );
+    _passwordController = TextEditingController(
+      text: ref.read(loginControllerProvider).password,
+    );
   }
 
   @override
@@ -31,7 +37,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final AuthUiModel authUiModel =
+        ref.watch(loginControllerProvider); // Access the state
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: const Text('Login'),
         actions: <Widget>[
@@ -50,136 +59,167 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         ),
       ),
       body: SafeArea(
-          minimum: const EdgeInsets.all(24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              const Spacer(),
-              Center(child: Image.asset(Assets.logo, height: 90, width: 90,)),
-              const Gap(30),
-              Center(
-                child: Text('Welcome to the app',
-                    style: TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.w600,
-                        color: Theme.of(context).colorScheme.primary)),
-              ),
-              const Gap(10),
-              const Text('You can login with your email and password',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.black87,
-                  )),
-              const Spacer(),
-              const Text('Login',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                  )),
-              const Gap(10),
-              TextField(
-                controller: _emailController,
-                keyboardType: TextInputType.emailAddress,
-                textInputAction: TextInputAction.next,
-                onSubmitted: (String value) {
-                  FocusScope.of(context).nextFocus();
-                },
-                onChanged: (String value) {
-                  // Handle email input change
-                },
-                decoration: const InputDecoration(
-                  hintText: 'Enter your email',
-                  hintStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                ),
-              ),
-              const Gap(10),
-              const Text('Password',
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black87)),
-              const Gap(10),
-              TextField(
-                controller: _passwordController,
-                obscureText: true,
-                textInputAction: TextInputAction.done,
-                keyboardType: TextInputType.visiblePassword,
-                onSubmitted: (String value) {
-                  FocusScope.of(context).unfocus();
-                },
-                onChanged: (String value) {
-                  // Handle password input change
-                },
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    hintText: 'Enter your password',
-                    hintStyle: TextStyle(
-                      color: Colors.black54,
-                    ),
-                    suffixIcon: Icon(
-                      Icons.remove_red_eye_outlined,
+          minimum: const EdgeInsets.symmetric(horizontal: 24),
+          child: CustomScrollView(
+            slivers: <Widget>[
+              SliverFillRemaining(
+                hasScrollBody: false,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    const Spacer(),
+                    Center(
+                        child: Image.asset(
+                      Assets.logo,
+                      height: 90,
+                      width: 90,
                     )),
-              ),
-              const Gap(10),
-              Row(
-                children: <Widget>[
-                  SizedBox(
-                      height: 20,
-                      width: 20,
-                      child: Checkbox(
-                        value: false,
-                        onChanged: (bool? value) {},
-                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      )),
-                  const Gap(5),
-                  const Text('Remember me',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black54)),
-                  const Spacer(),
-                  TextButton(
-                    style: TextButton.styleFrom(
-                      // ignore: use_named_constants since they dont allow constant values
-                      minimumSize: const Size(0, 0),
-                      // ignore: use_named_constants
-                      padding: const EdgeInsets.all(0),
-                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    const Spacer(),
+                    Center(
+                      child: Text('Welcome to the app',
+                          style: TextStyle(
+                              fontSize: 26,
+                              fontWeight: FontWeight.w600,
+                              color: Theme.of(context).colorScheme.primary)),
                     ),
-                    child: const Text('Forgot Password?',
-                        style: TextStyle(decoration: TextDecoration.underline)),
-                    onPressed: () {
-                      throw UnimplementedError();
-                    },
-                  ),
-                ],
-              ),
-              const Spacer(
-                flex: 2,
-              ),
-              TextButton(
-                style: TextButton.styleFrom(
-                  minimumSize: const Size.fromHeight(50),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  side: BorderSide(
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+                    const Gap(10),
+                    const Text('You can login with your email and password',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black87,
+                        )),
+                    const Spacer(),
+                    const Text('Login',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        )),
+                    const Gap(10),
+                    TextField(
+                      controller: _emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      textInputAction: TextInputAction.next,
+                      onChanged: (String value) {
+                        ref
+                            .read(loginControllerProvider.notifier)
+                            .updateEmail(value);
+                      },
+                      decoration: const InputDecoration(
+                        contentPadding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                        hintText: 'Enter your email',
+                        hintStyle: TextStyle(
+                          color: Colors.black54,
+                        ),
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
+                      ),
+                    ),
+                    const Gap(15),
+                    const Text('Password',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black87)),
+                    const Gap(10),
+                    TextField(
+                      controller: _passwordController,
+                      obscureText: true,
+                      textInputAction: TextInputAction.done,
+                      keyboardType: TextInputType.visiblePassword,
+                      onSubmitted: (String value) {
+                        FocusScope.of(context).unfocus();
+                      },
+                      onChanged: (String value) {
+                        // Handle password input change
+                        ref
+                            .read(loginControllerProvider.notifier)
+                            .updatePassword(value);
+                      },
+                      decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 15),
+                          border: const OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          hintText: 'Enter your password',
+                          hintStyle: const TextStyle(
+                            color: Colors.black54,
+                          ),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              authUiModel.showPassword
+                                  ? Icons.visibility_outlined
+                                  : Icons.visibility_off_outlined,
+                            ),
+                            onPressed: () => ref
+                                .read(loginControllerProvider.notifier)
+                                .updateShowPassword(!authUiModel.showPassword),
+                          )),
+                    ),
+                    const Gap(10),
+                    Row(
+                      children: <Widget>[
+                        SizedBox(
+                            height: 20,
+                            width: 20,
+                            child: Checkbox(
+                              value: authUiModel.rememberMe,
+                              onChanged: (bool? value) {
+                                ref
+                                    .read(loginControllerProvider.notifier)
+                                    .updateRememberMe(value ?? false);
+                              },
+                              materialTapTargetSize:
+                                  MaterialTapTargetSize.shrinkWrap,
+                            )),
+                        const Gap(5),
+                        const Text('Remember me',
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.black54)),
+                        const Spacer(),
+                        TextButton(
+                          style: TextButton.styleFrom(
+                            // ignore: use_named_constants since they dont allow constant values
+                            minimumSize: const Size(0, 0),
+                            // ignore: use_named_constants
+                            padding: const EdgeInsets.all(0),
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          ),
+                          child: const Text('Create an account',
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline)),
+                          onPressed: () {
+                            throw UnimplementedError();
+                          },
+                        ),
+                      ],
+                    ),
+                    const Spacer(flex: 2),
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        minimumSize: const Size.fromHeight(50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        side: BorderSide(
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                      ),
+                      onPressed: () {
+                        ref.read(loginControllerProvider.notifier).login();
+                      },
+                      child: const Text('Login'),
+                    ),
+                    const Spacer(flex: 4),
+                  ],
                 ),
-                onPressed: () {
-                  throw UnimplementedError();
-                },
-                child: const Text('Login'),
               ),
-              const Spacer(flex: 4),
             ],
           )),
     );
