@@ -52,6 +52,13 @@ class HttpAuthRepository implements AuthenticationRepository {
         if (e.response?.statusCode == 401) {
           throw Exception('Invalid credentials');
         }
+        if (e.response?.statusCode == 400) {
+          throw Exception('User not found');
+        }
+        else 
+        {
+          throw Exception('Login failed');
+        }
       }
 
       /// Handle other exceptions as needed. Or you can create a custom exception class.
