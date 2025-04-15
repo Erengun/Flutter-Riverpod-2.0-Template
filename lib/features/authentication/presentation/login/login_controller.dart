@@ -36,19 +36,27 @@ class LoginController extends _$LoginController {
     state = const AuthUiModel();
   }
 
+  void updateLoading(bool isLoading) {
+    state = state.copyWith(isLoading: isLoading);
+  }
+
   Future<LoginResponse> login() async {
     if (state.email.isEmpty || state.password.isEmpty) {
       throw Exception('Email and password cannot be empty');
     }
+    updateLoading(true);
     final LoginResponse loginResponse = await ref.read(authenticationRepositoryProvider).login(
       state.email,
       state.password,
-    );
+    ).catchError((error) {
+      updateLoading(false);
+      throw Exception('Login failed: $error');
+    });
     if (loginResponse.token.isNotEmpty && !state.rememberMe) {
       // Handle successful login
       clear();
     }
-
+    updateLoading(false);
     return loginResponse;
   }
 
