@@ -97,14 +97,31 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           fontWeight: FontWeight.w500,
                         )),
                     const Gap(10),
-                    TextField(
+                    TextFormField(
                       controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
                       textInputAction: TextInputAction.next,
+                      autofillHints: const <String>[
+                        AutofillHints.email,
+                      ],
                       onChanged: (String value) {
                         ref
                             .read(loginControllerProvider.notifier)
                             .updateEmail(value);
+                      },
+                      autovalidateMode: AutovalidateMode.onUnfocus,
+                      validator: (String? value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter an email address';
+                        }
+                        // Regex for validating email format
+                        final RegExp emailRegex = RegExp(
+                          r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+                        );
+                        if (!emailRegex.hasMatch(value)) {
+                          return 'Please enter a valid email address';
+                        }
+                        return null;
                       },
                       decoration: const InputDecoration(
                         contentPadding:
@@ -125,13 +142,27 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             fontWeight: FontWeight.w500,
                             color: Colors.black87)),
                     const Gap(10),
-                    TextField(
+                    TextFormField(
                       controller: _passwordController,
-                      obscureText: true,
+                      obscureText: !authUiModel.showPassword,
+                      enableSuggestions: false,
+                      autocorrect: false,
+                      autofillHints: const <String>[
+                        AutofillHints.password,
+                      ],
                       textInputAction: TextInputAction.done,
                       keyboardType: TextInputType.visiblePassword,
-                      onSubmitted: (String value) {
+                      validator: (String? value) {
+                        /// Password validation logic
+                        if (value != null && value.isNotEmpty) {
+                          return 'Check letter case carefully.';
+                        }
+                        return null;
+                      },
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      onFieldSubmitted: (String value) {
                         FocusScope.of(context).unfocus();
+                        ref.read(loginControllerProvider.notifier).login();
                       },
                       onChanged: (String value) {
                         // Handle password input change
@@ -212,7 +243,17 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         ),
                       ),
                       onPressed: () {
-                        ref.read(loginControllerProvider.notifier).login();
+                        ref
+                            .read(loginControllerProvider.notifier)
+                            .login()
+                            .catchError((dynamic error, StackTrace stackTrace) {
+                          // Handle error here
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(error.toString()),
+                            ),
+                          );
+                        });
                       },
                       child: const Text('Login'),
                     ),
