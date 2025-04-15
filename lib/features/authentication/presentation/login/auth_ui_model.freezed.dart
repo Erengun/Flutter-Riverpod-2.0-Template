@@ -24,6 +24,7 @@ mixin _$AuthUiModel {
   String get password => throw _privateConstructorUsedError;
   bool get rememberMe => throw _privateConstructorUsedError;
   bool get showPassword => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
 
   /// Serializes this AuthUiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,7 +43,11 @@ abstract class $AuthUiModelCopyWith<$Res> {
       _$AuthUiModelCopyWithImpl<$Res, AuthUiModel>;
   @useResult
   $Res call(
-      {String email, String password, bool rememberMe, bool showPassword});
+      {String email,
+      String password,
+      bool rememberMe,
+      bool showPassword,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -64,6 +69,7 @@ class _$AuthUiModelCopyWithImpl<$Res, $Val extends AuthUiModel>
     Object? password = null,
     Object? rememberMe = null,
     Object? showPassword = null,
+    Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
       email: null == email
@@ -82,6 +88,10 @@ class _$AuthUiModelCopyWithImpl<$Res, $Val extends AuthUiModel>
           ? _value.showPassword
           : showPassword // ignore: cast_nullable_to_non_nullable
               as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -95,7 +105,11 @@ abstract class _$$AuthUiModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String email, String password, bool rememberMe, bool showPassword});
+      {String email,
+      String password,
+      bool rememberMe,
+      bool showPassword,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -115,6 +129,7 @@ class __$$AuthUiModelImplCopyWithImpl<$Res>
     Object? password = null,
     Object? rememberMe = null,
     Object? showPassword = null,
+    Object? isLoading = null,
   }) {
     return _then(_$AuthUiModelImpl(
       email: null == email
@@ -133,6 +148,10 @@ class __$$AuthUiModelImplCopyWithImpl<$Res>
           ? _value.showPassword
           : showPassword // ignore: cast_nullable_to_non_nullable
               as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -144,7 +163,8 @@ class _$AuthUiModelImpl implements _AuthUiModel {
       {this.email = '',
       this.password = '',
       this.rememberMe = false,
-      this.showPassword = false});
+      this.showPassword = false,
+      this.isLoading = false});
 
   factory _$AuthUiModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$AuthUiModelImplFromJson(json);
@@ -161,10 +181,13 @@ class _$AuthUiModelImpl implements _AuthUiModel {
   @override
   @JsonKey()
   final bool showPassword;
+  @override
+  @JsonKey()
+  final bool isLoading;
 
   @override
   String toString() {
-    return 'AuthUiModel(email: $email, password: $password, rememberMe: $rememberMe, showPassword: $showPassword)';
+    return 'AuthUiModel(email: $email, password: $password, rememberMe: $rememberMe, showPassword: $showPassword, isLoading: $isLoading)';
   }
 
   @override
@@ -178,13 +201,15 @@ class _$AuthUiModelImpl implements _AuthUiModel {
             (identical(other.rememberMe, rememberMe) ||
                 other.rememberMe == rememberMe) &&
             (identical(other.showPassword, showPassword) ||
-                other.showPassword == showPassword));
+                other.showPassword == showPassword) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, email, password, rememberMe, showPassword);
+  int get hashCode => Object.hash(
+      runtimeType, email, password, rememberMe, showPassword, isLoading);
 
   /// Create a copy of AuthUiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -207,7 +232,8 @@ abstract class _AuthUiModel implements AuthUiModel {
       {final String email,
       final String password,
       final bool rememberMe,
-      final bool showPassword}) = _$AuthUiModelImpl;
+      final bool showPassword,
+      final bool isLoading}) = _$AuthUiModelImpl;
 
   factory _AuthUiModel.fromJson(Map<String, dynamic> json) =
       _$AuthUiModelImpl.fromJson;
@@ -220,6 +246,8 @@ abstract class _AuthUiModel implements AuthUiModel {
   bool get rememberMe;
   @override
   bool get showPassword;
+  @override
+  bool get isLoading;
 
   /// Create a copy of AuthUiModel
   /// with the given fields replaced by the non-null parameter values.

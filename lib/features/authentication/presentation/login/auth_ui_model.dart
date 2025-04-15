@@ -10,6 +10,7 @@ abstract class AuthUiModel with _$AuthUiModel {
     @Default('') String password,
     @Default(false) bool rememberMe,
     @Default(false) bool showPassword,
+    @Default(false) bool isLoading,
   }) = _AuthUiModel;
 
   factory AuthUiModel.fromJson(Map<String, dynamic> json) =>

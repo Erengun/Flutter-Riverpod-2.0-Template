@@ -12,6 +12,7 @@ _$AuthUiModelImpl _$$AuthUiModelImplFromJson(Map<String, dynamic> json) =>
       password: json['password'] as String? ?? '',
       rememberMe: json['rememberMe'] as bool? ?? false,
       showPassword: json['showPassword'] as bool? ?? false,
+      isLoading: json['isLoading'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$AuthUiModelImplToJson(_$AuthUiModelImpl instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$$AuthUiModelImplToJson(_$AuthUiModelImpl instance) =>
       'password': instance.password,
       'rememberMe': instance.rememberMe,
       'showPassword': instance.showPassword,
+      'isLoading': instance.isLoading,
     };
