@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../constants/assets.dart';
+import '../../../../router/app_router.dart';
+import '../../domain/login_response.dart';
 import 'auth_ui_model.dart';
 import 'login_controller.dart';
 
@@ -248,14 +251,30 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             .login()
                             .catchError((dynamic error, StackTrace stackTrace) {
                           // Handle error here
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(error.toString()),
-                            ),
-                          );
-                        });
+                          if (context.mounted) {
+                            // Show error message to the user
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(error.toString()),
+                              ),
+                            );
+                          }
+                          return const LoginResponse(token: '');
+                        }).then(
+                          (LoginResponse loginResponse) {
+                            // Check for token and also context.mounted
+                            // to avoid context access after dispose
+                            if (loginResponse.token.isNotEmpty &&
+                                context.mounted) {
+                              // Handle successful login
+                              context.go(SGRoute.firstScreen.route);
+                            }
+                          },
+                        );
                       },
-                      child: authUiModel.isLoading ? const CircularProgressIndicator() : const Text('Login'),
+                      child: authUiModel.isLoading
+                          ? const CircularProgressIndicator()
+                          : const Text('Login'),
                     ),
                     const Spacer(flex: 4),
                   ],
