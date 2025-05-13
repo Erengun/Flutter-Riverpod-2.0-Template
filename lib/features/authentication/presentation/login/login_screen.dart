@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../constants/assets.dart';
 import '../../../../router/app_router.dart';
 import '../../domain/login_response.dart';
+import '../register/register_dialog.dart';
 import 'auth_ui_model.dart';
 import 'login_controller.dart';
 
@@ -49,8 +50,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.person_outline_outlined),
-            onPressed: () {
-              throw UnimplementedError();
+            onPressed: () async {
+              await showAdaptiveDialog(context: context, builder: (_) {
+                return const RegisterDialog();
+              });
             },
           ),
         ],
