@@ -10,7 +10,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../../config/theme/theme_ui_model.dart';
 import '../../domain/login_request.dart';
 
 part 'hive_box_providers.g.dart';

@@ -118,14 +118,18 @@ class _RegisterDialogState extends ConsumerState<RegisterDialog> {
                           password: _passwordController.text,
                         )
                         .then((RegisterResponse value) {
-                      Navigator.pop(context);
-                    }).catchError((error) {
+                      if (context.mounted) {
+                        Navigator.pop(context);
+                      }
+                    }).catchError((dynamic error) {
                       // Handle error
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(error.toString()),
-                        ),
-                      );
+                      if (context.mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(error.toString()),
+                          ),
+                        );
+                      }
                     });
                   },
                   child: Text(
