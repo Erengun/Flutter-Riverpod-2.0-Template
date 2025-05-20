@@ -24,18 +24,8 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   @override
   void initState() {
     super.initState();
-    _emailController = TextEditingController(
-      text: ref.read(loginControllerProvider).user?.email,
-    );
-    _passwordController = TextEditingController(
-      text: ref.read(loginControllerProvider).user?.password,
-    );
-    _emailController.addListener(() {
-      ref.read(loginControllerProvider.notifier).updateEmail(_emailController.text);
-    });
-    _passwordController.addListener(() {
-      ref.read(loginControllerProvider.notifier).updatePassword(_passwordController.text);
-    });
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
   }
 
   @override
@@ -49,6 +39,13 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   Widget build(BuildContext context) {
     final AuthUiModel authUiModel =
         ref.watch(loginControllerProvider); // Access the state
+    ref.listen(loginControllerProvider,
+        (AuthUiModel? previous, AuthUiModel next) {
+      if (next.user != null) {
+        _emailController.text = next.user!.email;
+        _passwordController.text = next.user!.password;
+      }
+    });
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -57,9 +54,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
           IconButton(
             icon: const Icon(Icons.person_outline_outlined),
             onPressed: () async {
-              await showAdaptiveDialog(context: context, builder: (_) {
-                return const RegisterDialog();
-              });
+              await showAdaptiveDialog(
+                  context: context,
+                  builder: (_) {
+                    return const RegisterDialog();
+                  });
             },
           ),
         ],
@@ -100,7 +99,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w400,
-                          color: Colors.black87,
                         )),
                     const Spacer(),
                     const Text('Login',
@@ -116,11 +114,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       autofillHints: const <String>[
                         AutofillHints.email,
                       ],
-                      onChanged: (String value) {
-                        ref
-                            .read(loginControllerProvider.notifier)
-                            .updateEmail(value);
-                      },
                       autovalidateMode: AutovalidateMode.onUnfocus,
                       validator: (String? value) {
                         if (value == null || value.isEmpty) {
@@ -151,8 +144,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     const Text('Password',
                         style: TextStyle(
                             fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black87)),
+                            fontWeight: FontWeight.w500)),
                     const Gap(10),
                     TextFormField(
                       controller: _passwordController,
@@ -164,23 +156,20 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       ],
                       textInputAction: TextInputAction.done,
                       keyboardType: TextInputType.visiblePassword,
-                      validator: (String? value) {
-                        /// Password validation logic
-                        if (value != null && value.isNotEmpty) {
-                          return 'Check letter case carefully.';
-                        }
-                        return null;
-                      },
+                      // validator: (String? value) {
+                      //   /// Password validation logic
+                      //   if (value != null && value.isNotEmpty) {
+                      //     return 'Check letter case carefully.';
+                      //   }
+                      //   return null;
+                      // },
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       onFieldSubmitted: (String value) {
                         FocusScope.of(context).unfocus();
-                        ref.read(loginControllerProvider.notifier).login();
-                      },
-                      onChanged: (String value) {
-                        // Handle password input change
-                        ref
-                            .read(loginControllerProvider.notifier)
-                            .updatePassword(value);
+                        ref.read(loginControllerProvider.notifier).login(
+                              email: _emailController.text,
+                              password: _passwordController.text,
+                            );
                       },
                       decoration: InputDecoration(
                           contentPadding: const EdgeInsets.symmetric(
@@ -224,7 +213,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w400,
-                                color: Colors.black54)),
+                                )),
                         const Spacer(),
                         TextButton(
                           style: TextButton.styleFrom(
@@ -264,7 +253,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       onPressed: () {
                         ref
                             .read(loginControllerProvider.notifier)
-                            .login()
+                            .login(
+                              email: _emailController.text,
+                              password: _passwordController.text,
+                            )
                             .catchError((dynamic error, StackTrace stackTrace) {
                           // Handle error here
                           if (context.mounted) {

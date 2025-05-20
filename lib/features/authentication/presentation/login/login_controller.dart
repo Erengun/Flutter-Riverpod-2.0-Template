@@ -13,27 +13,20 @@ part 'login_controller.g.dart';
 class LoginController extends _$LoginController {
   @override
   AuthUiModel build() {
-    LoginCredentials? user;
     final Future<LoginCredentials?> userLoginFuture =
         ref.read(userRepositoryProvider).getCachedUser();
     userLoginFuture.then((LoginCredentials? cachedUser) {
       if (cachedUser != null) {
-        user = cachedUser;
-      }
+        state = state.copyWith(
+          user: cachedUser,
+          rememberMe: true,
+        );
+      } 
     }).catchError((error) {
       // Handle error if needed
     });
-    return AuthUiModel(
-      user: user,
+    return const AuthUiModel(
     );
-  }
-
-  void updateEmail(String email) {
-    state = state.copyWith(user: state.user?.copyWith(email: email));
-  }
-
-  void updatePassword(String password) {
-    state = state.copyWith(user: state.user?.copyWith(password: password));
   }
 
   void updateRememberMe(bool rememberMe) {
@@ -51,11 +44,11 @@ class LoginController extends _$LoginController {
     state = state.copyWith(isLoading: isLoading);
   }
 
-  Future<LoginResponse> login() async {
-    final LoginCredentials? user = state.user;
-    if (user == null) {
-      throw Exception('Please provide user credentials');
-    }
+  Future<LoginResponse> login({required String email, required String password}) async {
+    final LoginCredentials user = LoginCredentials(
+      email: email,
+      password: password,
+    );
     if (user.email.isEmpty || user.password.isEmpty) {
       throw Exception('Email and password cannot be empty');
     }
@@ -77,7 +70,7 @@ class LoginController extends _$LoginController {
         );
         await ref
             .read(userRepositoryProvider)
-            .cacheUser(state.user!)
+            .cacheUser(user)
             .catchError((dynamic error) {
           throw Exception('Failed to cache user: $error');
         });
