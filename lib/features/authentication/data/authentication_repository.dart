@@ -34,8 +34,8 @@ class HttpAuthRepository implements AuthenticationRepository {
   Future<LoginResponse> login(String email, String password) async {
     try {
       final Response<dynamic> response = await dio.post(Endpoints.login,
-          data: AuthenticationRequest(
-              email: email, password: password, username: email.split('@')[0]));
+          data: LoginCredentials(
+              email: email, password: password));
       if (response.statusCode != 200) {
         throw Exception('Failed to login');
       }
@@ -73,8 +73,8 @@ class HttpAuthRepository implements AuthenticationRepository {
   Future<RegisterResponse> register(String email, String password) async {
     try {
       final Response<dynamic> response = await dio.post(Endpoints.register,
-          data: AuthenticationRequest(
-              email: email, password: password, username: email.split('@')[0]));
+          data: LoginCredentials(
+              email: email, password: password));
       if (response.statusCode != 200) {
         throw Exception('Failed to register');
       }
