@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
-import '../../../../utils/context_extensions.dart';
-import '../../../../utils/url_utils.dart';
+import '../../../../../utils/context_extensions.dart';
+import '../../../../../utils/url_utils.dart';
 
 class SocialTile extends StatelessWidget {
   const SocialTile(

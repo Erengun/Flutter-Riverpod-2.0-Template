@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ionicons/ionicons.dart';
 
-import '../../../../config/theme/theme_logic.dart';
+import '../../../../../config/theme/theme_logic.dart';
 
 class ThemeWidget extends ConsumerWidget {
   const ThemeWidget({
