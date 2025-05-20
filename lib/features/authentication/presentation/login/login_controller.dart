@@ -22,7 +22,7 @@ class LoginController extends _$LoginController {
           rememberMe: true,
         );
       } 
-    }).catchError((error) {
+    }).catchError((dynamic error) {
       // Handle error if needed
     });
     return const AuthUiModel(
@@ -59,7 +59,7 @@ class LoginController extends _$LoginController {
           user.email,
           user.password,
         )
-        .catchError((error) {
+        .catchError((dynamic error) {
       updateLoading(false);
       throw Exception('Login failed: $error');
     });
