@@ -7,12 +7,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:stack_trace/stack_trace.dart' as stack_trace;
 
 import 'constants/strings.dart';
-import 'data/hive/hive.dart';
-import 'di/components/service_locator.dart';
+import 'hive/hive.dart';
 import 'my_app.dart';
 
 /// Try using const constructors as much as possible!
@@ -21,9 +19,7 @@ void main() async {
   /// Initialize packages
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  await GetStorage.init();
   await initHive();
-  await configureDependencies();
   await setPreferredOrientations();
   if (!kIsWeb) {
     if (Platform.isAndroid) {
