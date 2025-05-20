@@ -30,7 +30,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  path_provider: ^2.0.11
+  path_provider: ^2.1.5
   flutter_displaymode: ^0.6.0
   easy_localization: ^3.0.7
   ionicons: ^0.2.2
@@ -40,12 +40,8 @@ dependencies:
   dio: ^5.8.0+1
   freezed_annotation: ^2.4.4
   riverpod_annotation: ^2.6.1
-  hive: ^2.2.3
   retrofit: ^4.4.2
   logger: ^2.5.0
-  injectable: ^2.5.0
-  get_it: ^8.0.3
-  hive_flutter: ^1.1.0
   get_storage: ^2.1.1
   gap: ^3.0.1
   network_logger: ^1.0.4
@@ -58,6 +54,11 @@ dependencies:
   intl: ^0.19.0
   stack_trace: ^1.11.0
   google_fonts: ^6.2.1
+  android_id: ^0.4.0
+  hive_ce: ^2.11.1
+  device_info_plus: ^11.4.0
+  crypto: ^3.0.6
+  hive_ce_flutter: ^2.3.0
 
 
 dev_dependencies:
@@ -79,6 +80,7 @@ dev_dependencies:
   injectable_generator: ^2.1.6
   freezed: ^2.5.8
   rider: ^0.0.1
+  hive_ce_generator: ^1.9.1
 
 
 # For information on the generic Dart part of this file, see the
