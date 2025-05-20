@@ -27,6 +27,14 @@ void main() async {
     }
   }
 
+  if (kReleaseMode) {
+    /// Disable debugPrint in release mode
+    /// This will prevent any debugPrint statements from being executed
+    /// and will not print anything to the console.
+    /// You can also use a custom implementation if needed
+    debugPrint = (String? message, {int? wrapWidth}) {};
+  }
+
   runApp(
     EasyLocalization(
       supportedLocales: const <Locale>[
@@ -35,12 +43,13 @@ void main() async {
         Locale('tr'),
       ],
       path: Strings.localizationsPath,
-      fallbackLocale: const Locale('en', ''),
+      fallbackLocale: const Locale('en'),
       child: const ProviderScope(
         child: MyApp(),
       ),
     ),
   );
+
   /// Add this line to get the error stack trace in release mode
   FlutterError.demangleStackTrace = (StackTrace stack) {
     if (stack is stack_trace.Trace) return stack.vmTrace;
