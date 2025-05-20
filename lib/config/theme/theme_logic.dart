@@ -13,7 +13,7 @@ class ThemeLogic extends _$ThemeLogic {
   @override
   ThemeUiModel build() {
     ThemeMode themeMode = ThemeMode.system;
-    final Box<String> prefsBox = Hive.box('prefs');
+    final Box<String> prefsBox = Hive.box<String>('prefs');
     final String mode = prefsBox.get('themeMode',
         defaultValue: ThemeMode.system.toString()) as String;
     switch (mode) {

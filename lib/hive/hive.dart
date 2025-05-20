@@ -9,6 +9,5 @@ Future<void> initHive() async {
     final Directory directory = await getTemporaryDirectory();
     Hive
     ..init(directory.path)..registerAdapters();
-    await Hive.openBox('prefs');
-    await Hive.openBox('userBox');
+    await Hive.openBox<String>('prefs');
 }

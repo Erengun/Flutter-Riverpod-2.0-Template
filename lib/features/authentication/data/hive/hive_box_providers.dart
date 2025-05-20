@@ -35,15 +35,13 @@ Future<Box<LoginCredentials>> userBox(Ref ref) async {
   return Hive.openBox<LoginCredentials>(
     'userBox',
     encryptionCipher: HiveAesCipher(key),        // AES-256-CBC
-  );                                             // Hive docs: :contentReference[oaicite:2]{index=2}
+  );                                            
 }
 
 @riverpod
-Future<Box<ThemeUiModel>> themeBox(Ref ref) async {
+Future<Box<String>> themeBox(Ref ref) async {
   await Hive.initFlutter();               // hive_ce_flutter
-  final List<int> key = await _deviceKey();
-  return Hive.openBox<ThemeUiModel>(
+  return Hive.openBox<String>(
     'themeBox',
-    encryptionCipher: HiveAesCipher(key),        // AES-256-CBC
-  );                                             // Hive docs: :contentReference[oaicite:2]{index=2}
+  );                                          
 }
