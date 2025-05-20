@@ -25,11 +25,17 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   void initState() {
     super.initState();
     _emailController = TextEditingController(
-      text: ref.read(loginControllerProvider).email,
+      text: ref.read(loginControllerProvider).user?.email,
     );
     _passwordController = TextEditingController(
-      text: ref.read(loginControllerProvider).password,
+      text: ref.read(loginControllerProvider).user?.password,
     );
+    _emailController.addListener(() {
+      ref.read(loginControllerProvider.notifier).updateEmail(_emailController.text);
+    });
+    _passwordController.addListener(() {
+      ref.read(loginControllerProvider.notifier).updatePassword(_passwordController.text);
+    });
   }
 
   @override
@@ -231,8 +237,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           child: const Text('Create an account',
                               style: TextStyle(
                                   decoration: TextDecoration.underline)),
-                          onPressed: () {
-                            throw UnimplementedError();
+                          onPressed: () async {
+                            await showAdaptiveDialog(
+                              context: context,
+                              barrierDismissible: true,
+                              barrierColor: Colors.black54,
+                              builder: (_) {
+                                return const RegisterDialog();
+                              },
+                            );
                           },
                         ),
                       ],
