@@ -1,7 +1,7 @@
 // ignore_for_file: cast_nullable_to_non_nullable
 
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_ce/hive.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'theme_ui_model.dart';
