@@ -20,7 +20,7 @@ RegisterResponse _$RegisterResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RegisterResponse {
-  String get id => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
   String get token => throw _privateConstructorUsedError;
 
   /// Serializes this RegisterResponse to a JSON map.
@@ -39,7 +39,7 @@ abstract class $RegisterResponseCopyWith<$Res> {
           RegisterResponse value, $Res Function(RegisterResponse) then) =
       _$RegisterResponseCopyWithImpl<$Res, RegisterResponse>;
   @useResult
-  $Res call({String id, String token});
+  $Res call({int id, String token});
 }
 
 /// @nodoc
@@ -64,7 +64,7 @@ class _$RegisterResponseCopyWithImpl<$Res, $Val extends RegisterResponse>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
@@ -81,7 +81,7 @@ abstract class _$$RegisterResponseImplCopyWith<$Res>
       __$$RegisterResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String token});
+  $Res call({int id, String token});
 }
 
 /// @nodoc
@@ -104,7 +104,7 @@ class __$$RegisterResponseImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       token: null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
@@ -122,7 +122,7 @@ class _$RegisterResponseImpl implements _RegisterResponse {
       _$$RegisterResponseImplFromJson(json);
 
   @override
-  final String id;
+  final int id;
   @override
   final String token;
 
@@ -163,14 +163,14 @@ class _$RegisterResponseImpl implements _RegisterResponse {
 
 abstract class _RegisterResponse implements RegisterResponse {
   const factory _RegisterResponse(
-      {required final String id,
+      {required final int id,
       required final String token}) = _$RegisterResponseImpl;
 
   factory _RegisterResponse.fromJson(Map<String, dynamic> json) =
       _$RegisterResponseImpl.fromJson;
 
   @override
-  String get id;
+  int get id;
   @override
   String get token;
 

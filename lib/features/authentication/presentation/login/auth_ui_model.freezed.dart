@@ -20,8 +20,7 @@ AuthUiModel _$AuthUiModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AuthUiModel {
-  String get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
+  LoginCredentials? get user => throw _privateConstructorUsedError;
   bool get rememberMe => throw _privateConstructorUsedError;
   bool get showPassword => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
@@ -43,11 +42,12 @@ abstract class $AuthUiModelCopyWith<$Res> {
       _$AuthUiModelCopyWithImpl<$Res, AuthUiModel>;
   @useResult
   $Res call(
-      {String email,
-      String password,
+      {LoginCredentials? user,
       bool rememberMe,
       bool showPassword,
       bool isLoading});
+
+  $LoginCredentialsCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -65,21 +65,16 @@ class _$AuthUiModelCopyWithImpl<$Res, $Val extends AuthUiModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
-    Object? password = null,
+    Object? user = freezed,
     Object? rememberMe = null,
     Object? showPassword = null,
     Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as LoginCredentials?,
       rememberMe: null == rememberMe
           ? _value.rememberMe
           : rememberMe // ignore: cast_nullable_to_non_nullable
@@ -94,6 +89,20 @@ class _$AuthUiModelCopyWithImpl<$Res, $Val extends AuthUiModel>
               as bool,
     ) as $Val);
   }
+
+  /// Create a copy of AuthUiModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $LoginCredentialsCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $LoginCredentialsCopyWith<$Res>(_value.user!, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -105,11 +114,13 @@ abstract class _$$AuthUiModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String email,
-      String password,
+      {LoginCredentials? user,
       bool rememberMe,
       bool showPassword,
       bool isLoading});
+
+  @override
+  $LoginCredentialsCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -125,21 +136,16 @@ class __$$AuthUiModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = null,
-    Object? password = null,
+    Object? user = freezed,
     Object? rememberMe = null,
     Object? showPassword = null,
     Object? isLoading = null,
   }) {
     return _then(_$AuthUiModelImpl(
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
+      user: freezed == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as LoginCredentials?,
       rememberMe: null == rememberMe
           ? _value.rememberMe
           : rememberMe // ignore: cast_nullable_to_non_nullable
@@ -160,8 +166,7 @@ class __$$AuthUiModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AuthUiModelImpl implements _AuthUiModel {
   const _$AuthUiModelImpl(
-      {this.email = '',
-      this.password = '',
+      {this.user,
       this.rememberMe = false,
       this.showPassword = false,
       this.isLoading = false});
@@ -170,11 +175,7 @@ class _$AuthUiModelImpl implements _AuthUiModel {
       _$$AuthUiModelImplFromJson(json);
 
   @override
-  @JsonKey()
-  final String email;
-  @override
-  @JsonKey()
-  final String password;
+  final LoginCredentials? user;
   @override
   @JsonKey()
   final bool rememberMe;
@@ -187,7 +188,7 @@ class _$AuthUiModelImpl implements _AuthUiModel {
 
   @override
   String toString() {
-    return 'AuthUiModel(email: $email, password: $password, rememberMe: $rememberMe, showPassword: $showPassword, isLoading: $isLoading)';
+    return 'AuthUiModel(user: $user, rememberMe: $rememberMe, showPassword: $showPassword, isLoading: $isLoading)';
   }
 
   @override
@@ -195,9 +196,7 @@ class _$AuthUiModelImpl implements _AuthUiModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthUiModelImpl &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
+            (identical(other.user, user) || other.user == user) &&
             (identical(other.rememberMe, rememberMe) ||
                 other.rememberMe == rememberMe) &&
             (identical(other.showPassword, showPassword) ||
@@ -208,8 +207,8 @@ class _$AuthUiModelImpl implements _AuthUiModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, email, password, rememberMe, showPassword, isLoading);
+  int get hashCode =>
+      Object.hash(runtimeType, user, rememberMe, showPassword, isLoading);
 
   /// Create a copy of AuthUiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -229,8 +228,7 @@ class _$AuthUiModelImpl implements _AuthUiModel {
 
 abstract class _AuthUiModel implements AuthUiModel {
   const factory _AuthUiModel(
-      {final String email,
-      final String password,
+      {final LoginCredentials? user,
       final bool rememberMe,
       final bool showPassword,
       final bool isLoading}) = _$AuthUiModelImpl;
@@ -239,9 +237,7 @@ abstract class _AuthUiModel implements AuthUiModel {
       _$AuthUiModelImpl.fromJson;
 
   @override
-  String get email;
-  @override
-  String get password;
+  LoginCredentials? get user;
   @override
   bool get rememberMe;
   @override

@@ -6,7 +6,7 @@ part 'register_response.g.dart';
 @freezed
 class RegisterResponse with _$RegisterResponse {
   const factory RegisterResponse({
-    required String id,
+    required int id,
     required String token,
   }) = _RegisterResponse;
 

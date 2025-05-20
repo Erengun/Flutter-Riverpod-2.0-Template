@@ -8,8 +8,9 @@ part of 'auth_ui_model.dart';
 
 _$AuthUiModelImpl _$$AuthUiModelImplFromJson(Map<String, dynamic> json) =>
     _$AuthUiModelImpl(
-      email: json['email'] as String? ?? '',
-      password: json['password'] as String? ?? '',
+      user: json['user'] == null
+          ? null
+          : LoginCredentials.fromJson(json['user'] as Map<String, dynamic>),
       rememberMe: json['rememberMe'] as bool? ?? false,
       showPassword: json['showPassword'] as bool? ?? false,
       isLoading: json['isLoading'] as bool? ?? false,
@@ -17,8 +18,7 @@ _$AuthUiModelImpl _$$AuthUiModelImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$AuthUiModelImplToJson(_$AuthUiModelImpl instance) =>
     <String, dynamic>{
-      'email': instance.email,
-      'password': instance.password,
+      'user': instance.user,
       'rememberMe': instance.rememberMe,
       'showPassword': instance.showPassword,
       'isLoading': instance.isLoading,

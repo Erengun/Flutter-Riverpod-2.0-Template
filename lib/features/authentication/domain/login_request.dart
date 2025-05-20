@@ -4,12 +4,11 @@ part 'login_request.freezed.dart';
 part 'login_request.g.dart';
 
 @freezed
-class AuthenticationRequest with _$AuthenticationRequest {
-  const factory AuthenticationRequest({
-    required String username,
+class LoginCredentials with _$LoginCredentials {
+  const factory LoginCredentials({
     required String email,
     required String password,
-  }) = _LoginRequest;
+  }) = _LoginCredentials;
 
-  factory AuthenticationRequest.fromJson(Map<String, dynamic> json) => _$AuthenticationRequestFromJson(json);
+  factory LoginCredentials.fromJson(Map<String, dynamic> json) => _$LoginCredentialsFromJson(json);
 }
