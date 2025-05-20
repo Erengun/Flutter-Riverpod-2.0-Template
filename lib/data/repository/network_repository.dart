@@ -21,6 +21,13 @@ class NetworkRepository extends _$NetworkRepository {
     // Accept: application/json"
     dio.options.headers['Accept'] = 'application/json';
 
+    // Content-Type: application/json
+    dio.options.headers['Content-Type'] = 'application/json';
+
+    // set api key
+    dio.options.headers['x-api-key'] = Endpoints.apiKey;
+
+
     /// Add Logger for debugging
     dio.interceptors.add(LogInterceptor(responseBody: true, requestBody: true));
     return dio;
@@ -28,6 +35,10 @@ class NetworkRepository extends _$NetworkRepository {
 
   set baseUrl(String baseUrl) {
     dio.options.baseUrl = baseUrl;
+  }
+
+  void setApiKey(String apiKey) {
+    dio.options.headers['x-api-key'] = apiKey;
   }
 
   void setToken(String token) {
