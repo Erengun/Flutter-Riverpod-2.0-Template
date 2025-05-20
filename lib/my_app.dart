@@ -3,11 +3,11 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'config/theme/theme_logic.dart';
 import 'config/theme/theme_ui_model.dart';
-import 'di/components/service_locator.dart';
 import 'router/app_router.dart';
 
 class MyApp extends ConsumerWidget {
@@ -16,9 +16,9 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final ThemeUiModel currentTheme = ref.watch(themeLogicProvider);
+    final GoRouter router = ref.watch(goRouterProvider);
     return MaterialApp.router(
-      routerConfig: getIt<SGGoRouter>().getGoRouter,
-
+      routerConfig: router,
       /// Localization is not available for the title.
       title: 'Flutter Production Boilerplate',
 
