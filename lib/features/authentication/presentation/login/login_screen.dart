@@ -275,7 +275,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             if (loginResponse.token.isNotEmpty &&
                                 context.mounted) {
                               // Handle successful login
-                              context.go(SGRoute.firstScreen.route);
+                              context.push(SGRoute.home.route);
                             }
                           },
                         );
