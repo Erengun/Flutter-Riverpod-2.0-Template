@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:ionicons/ionicons.dart';
 
 import '../../../../utils/context_extensions.dart';
-import '../../../common/bottom_nav_bar/bottom_nav_bar.dart';
 import 'widgets/header.dart';
 import 'widgets/language_tile.dart';
 import 'widgets/social_tile_widget.dart';
@@ -26,7 +25,6 @@ class HomeScreen extends ConsumerWidget {
           }
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
       backgroundColor: context.colorScheme.surface,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

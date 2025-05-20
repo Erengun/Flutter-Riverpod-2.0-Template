@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../features/authentication/presentation/login/login_screen.dart';
-import '../features/home/presentation/home.dart';
+import '../features/home/presentation/home_screen.dart';
 import 'fade_extension.dart';
 
 part 'app_router.g.dart';
