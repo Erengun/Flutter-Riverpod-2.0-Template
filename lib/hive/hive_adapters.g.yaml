@@ -5,10 +5,10 @@ nextTypeId: 4
 types:
   ThemeUiModel:
     typeId: 2
-    nextIndex: 1
+    nextIndex: 2
     fields:
       themeMode:
-        index: 0
+        index: 1
   LoginCredentials:
     typeId: 3
     nextIndex: 2

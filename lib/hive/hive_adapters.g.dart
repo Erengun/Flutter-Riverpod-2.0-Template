@@ -17,7 +17,7 @@ class ThemeUiModelAdapter extends TypeAdapter<ThemeUiModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return ThemeUiModel(
-      themeMode: fields[0] == null ? ThemeMode.system : fields[0] as ThemeMode,
+      themeMode: fields[1] == null ? ThemeMode.system : fields[1] as ThemeMode,
     );
   }
 
@@ -25,7 +25,7 @@ class ThemeUiModelAdapter extends TypeAdapter<ThemeUiModel> {
   void write(BinaryWriter writer, ThemeUiModel obj) {
     writer
       ..writeByte(1)
-      ..writeByte(0)
+      ..writeByte(1)
       ..write(obj.themeMode);
   }
 
