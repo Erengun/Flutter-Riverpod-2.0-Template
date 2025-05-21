@@ -40,7 +40,6 @@ dependencies:
   dio: ^5.8.0+1
   freezed_annotation: ^3.0.0
   riverpod_annotation: ^2.6.1
-  retrofit: ^4.4.2
   logger: ^2.5.0
   get_storage: ^2.1.1
   gap: ^3.0.1
@@ -76,8 +75,6 @@ dev_dependencies:
   json_serializable: ^6.9.4
   riverpod_generator: ^2.6.4
   riverpod_lint: ^2.6.4
-  retrofit_generator: ^9.1.5
-  injectable_generator: ^2.1.6
   freezed: ^3.0.6
   rider: ^0.0.1
   hive_ce_generator: ^1.9.1
