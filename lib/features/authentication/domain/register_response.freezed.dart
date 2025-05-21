@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,133 +10,30 @@ part of 'register_response.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-RegisterResponse _$RegisterResponseFromJson(Map<String, dynamic> json) {
-  return _RegisterResponse.fromJson(json);
-}
 
 /// @nodoc
 mixin _$RegisterResponse {
-  int get id => throw _privateConstructorUsedError;
-  String get token => throw _privateConstructorUsedError;
-
-  /// Serializes this RegisterResponse to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  int get id;
+  String get token;
 
   /// Create a copy of RegisterResponse
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $RegisterResponseCopyWith<RegisterResponse> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$RegisterResponseCopyWithImpl<RegisterResponse>(
+          this as RegisterResponse, _$identity);
 
-/// @nodoc
-abstract class $RegisterResponseCopyWith<$Res> {
-  factory $RegisterResponseCopyWith(
-          RegisterResponse value, $Res Function(RegisterResponse) then) =
-      _$RegisterResponseCopyWithImpl<$Res, RegisterResponse>;
-  @useResult
-  $Res call({int id, String token});
-}
-
-/// @nodoc
-class _$RegisterResponseCopyWithImpl<$Res, $Val extends RegisterResponse>
-    implements $RegisterResponseCopyWith<$Res> {
-  _$RegisterResponseCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of RegisterResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? token = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      token: null == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$RegisterResponseImplCopyWith<$Res>
-    implements $RegisterResponseCopyWith<$Res> {
-  factory _$$RegisterResponseImplCopyWith(_$RegisterResponseImpl value,
-          $Res Function(_$RegisterResponseImpl) then) =
-      __$$RegisterResponseImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int id, String token});
-}
-
-/// @nodoc
-class __$$RegisterResponseImplCopyWithImpl<$Res>
-    extends _$RegisterResponseCopyWithImpl<$Res, _$RegisterResponseImpl>
-    implements _$$RegisterResponseImplCopyWith<$Res> {
-  __$$RegisterResponseImplCopyWithImpl(_$RegisterResponseImpl _value,
-      $Res Function(_$RegisterResponseImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of RegisterResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? token = null,
-  }) {
-    return _then(_$RegisterResponseImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      token: null == token
-          ? _value.token
-          : token // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$RegisterResponseImpl implements _RegisterResponse {
-  const _$RegisterResponseImpl({required this.id, required this.token});
-
-  factory _$RegisterResponseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RegisterResponseImplFromJson(json);
-
-  @override
-  final int id;
-  @override
-  final String token;
-
-  @override
-  String toString() {
-    return 'RegisterResponse(id: $id, token: $token)';
-  }
+  /// Serializes this RegisterResponse to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RegisterResponseImpl &&
+            other is RegisterResponse &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.token, token) || other.token == token));
   }
@@ -144,40 +42,134 @@ class _$RegisterResponseImpl implements _RegisterResponse {
   @override
   int get hashCode => Object.hash(runtimeType, id, token);
 
-  /// Create a copy of RegisterResponse
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$RegisterResponseImplCopyWith<_$RegisterResponseImpl> get copyWith =>
-      __$$RegisterResponseImplCopyWithImpl<_$RegisterResponseImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$RegisterResponseImplToJson(
-      this,
-    );
+  String toString() {
+    return 'RegisterResponse(id: $id, token: $token)';
   }
 }
 
-abstract class _RegisterResponse implements RegisterResponse {
-  const factory _RegisterResponse(
-      {required final int id,
-      required final String token}) = _$RegisterResponseImpl;
+/// @nodoc
+abstract mixin class $RegisterResponseCopyWith<$Res> {
+  factory $RegisterResponseCopyWith(
+          RegisterResponse value, $Res Function(RegisterResponse) _then) =
+      _$RegisterResponseCopyWithImpl;
+  @useResult
+  $Res call({int id, String token});
+}
 
-  factory _RegisterResponse.fromJson(Map<String, dynamic> json) =
-      _$RegisterResponseImpl.fromJson;
+/// @nodoc
+class _$RegisterResponseCopyWithImpl<$Res>
+    implements $RegisterResponseCopyWith<$Res> {
+  _$RegisterResponseCopyWithImpl(this._self, this._then);
+
+  final RegisterResponse _self;
+  final $Res Function(RegisterResponse) _then;
+
+  /// Create a copy of RegisterResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? token = null,
+  }) {
+    return _then(_self.copyWith(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      token: null == token
+          ? _self.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _RegisterResponse implements RegisterResponse {
+  const _RegisterResponse({required this.id, required this.token});
+  factory _RegisterResponse.fromJson(Map<String, dynamic> json) =>
+      _$RegisterResponseFromJson(json);
 
   @override
-  int get id;
+  final int id;
   @override
-  String get token;
+  final String token;
 
   /// Create a copy of RegisterResponse
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RegisterResponseImplCopyWith<_$RegisterResponseImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$RegisterResponseCopyWith<_RegisterResponse> get copyWith =>
+      __$RegisterResponseCopyWithImpl<_RegisterResponse>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$RegisterResponseToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _RegisterResponse &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.token, token) || other.token == token));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, token);
+
+  @override
+  String toString() {
+    return 'RegisterResponse(id: $id, token: $token)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$RegisterResponseCopyWith<$Res>
+    implements $RegisterResponseCopyWith<$Res> {
+  factory _$RegisterResponseCopyWith(
+          _RegisterResponse value, $Res Function(_RegisterResponse) _then) =
+      __$RegisterResponseCopyWithImpl;
+  @override
+  @useResult
+  $Res call({int id, String token});
+}
+
+/// @nodoc
+class __$RegisterResponseCopyWithImpl<$Res>
+    implements _$RegisterResponseCopyWith<$Res> {
+  __$RegisterResponseCopyWithImpl(this._self, this._then);
+
+  final _RegisterResponse _self;
+  final $Res Function(_RegisterResponse) _then;
+
+  /// Create a copy of RegisterResponse
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? token = null,
+  }) {
+    return _then(_RegisterResponse(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      token: null == token
+          ? _self.token
+          : token // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+// dart format on

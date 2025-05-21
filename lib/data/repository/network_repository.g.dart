@@ -6,7 +6,7 @@ part of 'network_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$networkRepositoryHash() => r'594c281381e94bae8b89fa21991116a2ad9c79b1';
+String _$networkRepositoryHash() => r'689829fd7bdca53529df25f300f760e6cf302df8';
 
 /// A repository class that extends _$NetworkRepository to handle network-related operations.
 /// This class serves as an abstraction layer for managing network requests and responses,

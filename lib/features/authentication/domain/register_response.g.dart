@@ -6,15 +6,13 @@ part of 'register_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$RegisterResponseImpl _$$RegisterResponseImplFromJson(
-        Map<String, dynamic> json) =>
-    _$RegisterResponseImpl(
+_RegisterResponse _$RegisterResponseFromJson(Map<String, dynamic> json) =>
+    _RegisterResponse(
       id: (json['id'] as num).toInt(),
       token: json['token'] as String,
     );
 
-Map<String, dynamic> _$$RegisterResponseImplToJson(
-        _$RegisterResponseImpl instance) =>
+Map<String, dynamic> _$RegisterResponseToJson(_RegisterResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
       'token': instance.token,

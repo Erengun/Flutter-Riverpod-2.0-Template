@@ -26,6 +26,10 @@ class LoginController extends _$LoginController {
       // Handle error if needed
     });
     return const AuthUiModel(
+      user: null,
+      rememberMe: false,
+      showPassword: false,
+      isLoading: false,
     );
   }
 

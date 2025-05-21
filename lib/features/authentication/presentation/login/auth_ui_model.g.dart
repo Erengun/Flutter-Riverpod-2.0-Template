@@ -6,8 +6,7 @@ part of 'auth_ui_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AuthUiModelImpl _$$AuthUiModelImplFromJson(Map<String, dynamic> json) =>
-    _$AuthUiModelImpl(
+_AuthUiModel _$AuthUiModelFromJson(Map<String, dynamic> json) => _AuthUiModel(
       user: json['user'] == null
           ? null
           : LoginCredentials.fromJson(json['user'] as Map<String, dynamic>),
@@ -16,7 +15,7 @@ _$AuthUiModelImpl _$$AuthUiModelImplFromJson(Map<String, dynamic> json) =>
       isLoading: json['isLoading'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$$AuthUiModelImplToJson(_$AuthUiModelImpl instance) =>
+Map<String, dynamic> _$AuthUiModelToJson(_AuthUiModel instance) =>
     <String, dynamic>{
       'user': instance.user,
       'rememberMe': instance.rememberMe,
