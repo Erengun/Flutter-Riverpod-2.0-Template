@@ -21,7 +21,7 @@ class LoginController extends _$LoginController {
           user: cachedUser,
           rememberMe: true,
         );
-      } 
+      }
     }).catchError((dynamic error) {
       // Handle error if needed
     });
@@ -48,7 +48,8 @@ class LoginController extends _$LoginController {
     state = state.copyWith(isLoading: isLoading);
   }
 
-  Future<LoginResponse> login({required String email, required String password}) async {
+  Future<LoginResponse> login(
+      {required String email, required String password}) async {
     final LoginCredentials user = LoginCredentials(
       email: email,
       password: password,
@@ -70,7 +71,8 @@ class LoginController extends _$LoginController {
     if (loginResponse.token.isNotEmpty) {
       if (state.rememberMe) {
         state = state.copyWith(
-          user: state.user?.copyWith(email: user.email, password: user.password),
+          user:
+              state.user?.copyWith(email: user.email, password: user.password),
         );
         await ref
             .read(userRepositoryProvider)
@@ -102,12 +104,14 @@ class LoginController extends _$LoginController {
         user: state.user?.copyWith(email: email, password: password),
         rememberMe: true,
       );
-      await ref
-          .read(userRepositoryProvider)
-          .cacheUser(state.user!)
-          .catchError((dynamic error) {
-        throw Exception('Failed to cache user: $error');
-      });
+      if (state.user != null) {
+        await ref
+            .read(userRepositoryProvider)
+            .cacheUser(state.user!)
+            .catchError((dynamic error) {
+          throw Exception('Failed to cache user: $error');
+        });
+      }
     } else {
       throw Exception('Registration failed');
     }

@@ -1,35 +1,22 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
 import 'package:riverpod/riverpod.dart';
 
-import '../../lib/features/authentication/data/authentication_repository.dart';
-import '../../lib/features/authentication/data/hive/user_repository.dart';
-import '../../lib/features/authentication/domain/login_response.dart';
-import '../../lib/features/authentication/domain/register_response.dart';
 import '../../lib/features/authentication/presentation/login/login_controller.dart';
-import 'login_controller_test.mocks.dart';
 
-@GenerateMocks([AuthenticationRepository, UserRepository])
 void main() {
   late ProviderContainer container;
-  late MockAuthenticationRepository mockAuthRepo;
-  late MockUserRepository mockUserRepo;
+  late LoginController controller;
 
   setUp(() {
-    mockAuthRepo = MockAuthenticationRepository();
-    mockUserRepo = MockUserRepository();
-    container = ProviderContainer(
-      overrides: [
-        authenticationRepositoryProvider.overrideWithValue(mockAuthRepo),
-        userRepositoryProvider.overrideWithValue(mockUserRepo),
-      ],
-    );
+    container = ProviderContainer();
+    controller = container.read(loginControllerProvider.notifier);
+  });
+
+  tearDown(() {
+    container.dispose();
   });
 
   test('initial state is correct', () {
-    when(mockUserRepo.getCachedUser()).thenAnswer((_) async => null);
-    final controller = container.read(loginControllerProvider.notifier);
     expect(controller.state.user, isNull);
     expect(controller.state.rememberMe, isFalse);
     expect(controller.state.showPassword, isFalse);
@@ -38,16 +25,11 @@ void main() {
 
   group('login', () {
     test('successful login updates state correctly', () async {
-      when(mockAuthRepo.login('test@test.com', 'password'))
-          .thenAnswer((_) async => LoginResponse(token: 'token'));
-      when(mockUserRepo.cacheUser(any)).thenAnswer((_) async => {});
-
-      final controller = container.read(loginControllerProvider.notifier);
       controller.updateRememberMe(true);
 
       await controller.login(
-        email: 'test@test.com',
-        password: 'password',
+        email: 'eve.holt@reqres.in',
+        password: 'cityslicka',
       );
 
       expect(controller.state.isLoading, isFalse);
@@ -55,7 +37,6 @@ void main() {
 
     test('throws exception when credentials are empty', () async {
       final controller = container.read(loginControllerProvider.notifier);
-      
       expect(
         () => controller.login(email: '', password: ''),
         throwsException,
@@ -65,15 +46,11 @@ void main() {
 
   group('register', () {
     test('successful registration updates state correctly', () async {
-      when(mockAuthRepo.register('test@test.com', 'password'))
-          .thenAnswer((_) async => RegisterResponse(token: 'token', id: 1));
-      when(mockUserRepo.cacheUser(any)).thenAnswer((_) async => {});
-
       final controller = container.read(loginControllerProvider.notifier);
 
       await controller.register(
-        email: 'test@test.com',
-        password: 'password',
+        email: 'eve.holt@reqres.in',
+        password: 'pistol',
       );
 
       expect(controller.state.rememberMe, isTrue);
@@ -81,7 +58,7 @@ void main() {
 
     test('throws exception when credentials are empty', () async {
       final controller = container.read(loginControllerProvider.notifier);
-      
+
       expect(
         () => controller.register(email: '', password: ''),
         throwsException,
