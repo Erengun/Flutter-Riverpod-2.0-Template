@@ -54,7 +54,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
           IconButton(
             icon: const Icon(Icons.person_outline_outlined),
             onPressed: () async {
-              await showAdaptiveDialog(
+              await showAdaptiveDialog<void>(
                   context: context,
                   builder: (_) {
                     return const RegisterDialog();
@@ -143,8 +143,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     const Gap(15),
                     const Text('Password',
                         style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500)),
+                            fontSize: 20, fontWeight: FontWeight.w500)),
                     const Gap(10),
                     TextFormField(
                       controller: _passwordController,
@@ -211,9 +210,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         const Gap(5),
                         const Text('Remember me',
                             style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w400,
-                                )),
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                            )),
                         const Spacer(),
                         TextButton(
                           style: TextButton.styleFrom(
@@ -227,7 +226,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                               style: TextStyle(
                                   decoration: TextDecoration.underline)),
                           onPressed: () async {
-                            await showAdaptiveDialog(
+                            await showAdaptiveDialog<void>(
                               context: context,
                               barrierDismissible: true,
                               barrierColor: Colors.black54,

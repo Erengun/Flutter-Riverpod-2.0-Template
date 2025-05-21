@@ -41,12 +41,10 @@ class HttpAuthRepository implements AuthenticationRepository {
       }
       final LoginResponse loginResponse =
           LoginResponse.fromJson(response.data as Map<String, dynamic>);
-      if (loginResponse.token != null) {
-        ref
-            .read(networkRepositoryProvider.notifier)
-            .setToken(loginResponse.token);
-      }
-      return loginResponse;
+      ref
+          .read(networkRepositoryProvider.notifier)
+          .setToken(loginResponse.token);
+          return loginResponse;
     } catch (e) {
       if (e is DioException) {
         if (e.response?.statusCode == 401) {
@@ -97,6 +95,6 @@ class HttpAuthRepository implements AuthenticationRepository {
 
 @riverpod
 AuthenticationRepository authenticationRepository(
-    AuthenticationRepositoryRef ref) {
+    Ref ref) {
   return HttpAuthRepository(ref);
 }
