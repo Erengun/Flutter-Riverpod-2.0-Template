@@ -13,11 +13,9 @@ part 'network_repository.g.dart';
 /// providing a clean interface for the rest of the application to interact with network data.
 @riverpod
 class NetworkRepository extends _$NetworkRepository {
-  late final Dio dio;
-
   @override
   Dio build() {
-    dio = Dio(BaseOptions(baseUrl: Endpoints.baseUrl));
+    Dio dio = Dio(BaseOptions(baseUrl: Endpoints.baseUrl));
     // Accept: application/json"
     dio.options.headers['Accept'] = 'application/json';
 
@@ -27,35 +25,32 @@ class NetworkRepository extends _$NetworkRepository {
     // set api key
     dio.options.headers['x-api-key'] = Endpoints.apiKey;
 
-
     /// Add Logger for debugging
     dio.interceptors.add(LogInterceptor(responseBody: true, requestBody: true));
     return dio;
   }
 
   set baseUrl(String baseUrl) {
-    dio.options.baseUrl = baseUrl;
+    state.options.baseUrl = baseUrl;
   }
 
   void setApiKey(String apiKey) {
-    dio.options.headers['x-api-key'] = apiKey;
+    state.options.headers['x-api-key'] = apiKey;
   }
 
   void setToken(String token) {
-    dio.options.headers['Authorization'] = 'Bearer $token';
+    state.options.headers['Authorization'] = 'Bearer $token';
 
     /// Cache the token for 1 day
     ref.cacheFor(const Duration(days: 1));
   }
 
-  String get baseUrl => dio.options.baseUrl;
-
   Future<Response<T>> get<T>(String path,
       {Map<String, dynamic>? queryParameters, String? baseUrl}) async {
     if (baseUrl != null) {
-      dio.options.baseUrl = baseUrl;
+      state.options.baseUrl = baseUrl;
     }
-    return dio.get(path, queryParameters: queryParameters);
+    return state.get(path, queryParameters: queryParameters);
   }
 
   Future<Response<T>> post<T>(String path,
@@ -63,8 +58,8 @@ class NetworkRepository extends _$NetworkRepository {
       Map<String, dynamic>? queryParameters,
       String? baseUrl}) async {
     if (baseUrl != null) {
-      dio.options.baseUrl = baseUrl;
+      state.options.baseUrl = baseUrl;
     }
-    return dio.post(path, data: data, queryParameters: queryParameters);
+    return state.post(path, data: data, queryParameters: queryParameters);
   }
 }
