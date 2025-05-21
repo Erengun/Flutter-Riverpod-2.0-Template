@@ -36,15 +36,15 @@ void main() async {
   }
 
   runApp(
-    EasyLocalization(
-      supportedLocales: const <Locale>[
-        /// Add your supported locales here
-        Locale('en'),
-        Locale('tr'),
-      ],
-      path: Strings.localizationsPath,
-      fallbackLocale: const Locale('en'),
-      child: const ProviderScope(
+    ProviderScope(
+      child: EasyLocalization(
+        supportedLocales: const <Locale>[
+          /// Add your supported locales here
+          Locale('en'),
+          Locale('tr'),
+        ],
+        path: Strings.localizationsPath,
+        fallbackLocale: const Locale('en'),
         child: MyApp(),
       ),
     ),
