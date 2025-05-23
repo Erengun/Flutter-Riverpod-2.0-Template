@@ -1,17 +1,11 @@
 name: Flutter Lint
-defaults:
-    run:
-        working-directory: MobilGarsonFlutter
 
 on:
   pull_request:
-    branches: [ "master-dev",]
-    paths:
-      - 'MobilGarsonFlutter/**'
+    branches: [ "main",]
+
   push:
-    branches: [ "master-dev", "master-v2" ]
-    paths:
-      - 'MobilGarsonFlutter/**'
+    branches: [ "main" ]
 
 jobs:
   analyze:
