@@ -30,39 +30,34 @@ dependencies:
   flutter:
     sdk: flutter
 
-  path_provider: ^2.0.11
+  path_provider: ^2.1.5
   flutter_displaymode: ^0.6.0
-  easy_localization: ^3.0.1
+  easy_localization: ^3.0.7
   ionicons: ^0.2.2
   cupertino_icons: ^1.0.2
-  flutter_riverpod: ^2.3.6
-  riverpod: ^2.3.6
-  dio: ^5.2.1+1
-  equatable: ^2.0.5
-  freezed_annotation: ^2.2.0
-  riverpod_annotation: ^2.1.1
-  hive: ^2.2.3
-  retrofit: ^4.0.1
-  logger: ^2.4.0
-  injectable: ^2.1.2
-  get_it: ^8.0.3
-  hive_flutter: ^1.1.0
+  flutter_riverpod: ^2.6.1
+  riverpod: ^2.6.1
+  dio: ^5.8.0+1
+  freezed_annotation: ^3.0.0
+  riverpod_annotation: ^2.6.1
+  logger: ^2.5.0
   get_storage: ^2.1.1
   gap: ^3.0.1
   network_logger: ^1.0.4
   json_annotation: ^4.8.1
-  go_router: ^14.0.2
+  go_router: ^14.8.0
   fpdart: ^1.1.0
-  connectivity_plus: ^6.0.2
   responsive_builder: ^0.7.0
   flex_color_scheme: ^8.0.2
-  liquid_pull_to_refresh: ^3.0.1
   url_launcher: ^6.1.11
-  intl: ^0.19.0
-  flutter_html: ^3.0.0-beta.2
-  flutter_swipe_action_cell: ^3.1.2
+  intl: ^0.20.2
   stack_trace: ^1.11.0
-  water_drop_nav_bar: ^2.2.0+5
+  google_fonts: ^6.2.1
+  android_id: ^0.4.0
+  hive_ce: ^2.11.1
+  device_info_plus: ^11.4.0
+  crypto: ^3.0.6
+  hive_ce_flutter: ^2.3.0
 
 
 dev_dependencies:
@@ -76,15 +71,15 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
   # The "build_runner" package provides a way to generate files using Dart code
-  build_runner: ^2.4.5
-  json_serializable: ^6.7.0
-  riverpod_generator: ^2.2.3
-  riverpod_lint: ^2.3.2
-  retrofit_generator: ^9.1.5
-  injectable_generator: ^2.1.6
-  hive_generator: ^2.0.0
-  freezed: ^2.3.5
+  build_runner: ^2.4.15
+  json_serializable: ^6.9.4
+  riverpod_generator: ^2.6.4
+  custom_lint: ^0.7.5
+  riverpod_lint: ^2.6.4
+  freezed: ^3.0.6
   rider: ^0.0.1
+  hive_ce_generator: ^1.9.1
+  riverpod_test: ^0.1.9
 
 
 # For information on the generic Dart part of this file, see the
@@ -100,6 +95,7 @@ flutter:
 
   assets:
     - assets/translations/
+    - assets/img/
 
   fonts:
     - family: Nunito

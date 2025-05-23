@@ -1,7 +1,7 @@
 // ignore_for_file: cast_nullable_to_non_nullable
 
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_ce/hive.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'theme_ui_model.dart';
@@ -13,7 +13,7 @@ class ThemeLogic extends _$ThemeLogic {
   @override
   ThemeUiModel build() {
     ThemeMode themeMode = ThemeMode.system;
-    final Box<String> prefsBox = Hive.box('prefs');
+    final Box<String> prefsBox = Hive.box<String>('prefs');
     final String mode = prefsBox.get('themeMode',
         defaultValue: ThemeMode.system.toString()) as String;
     switch (mode) {
