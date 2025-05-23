@@ -25,7 +25,7 @@ void main() {
 
   group('login', () {
     test('successful login updates state correctly', () async {
-      controller.updateRememberMe(true);
+      controller.updateRememberMe(false);
 
       await controller.login(
         email: 'eve.holt@reqres.in',
