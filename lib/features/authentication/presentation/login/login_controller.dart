@@ -25,12 +25,7 @@ class LoginController extends _$LoginController {
     }).catchError((dynamic error) {
       // Handle error if needed
     });
-    return const AuthUiModel(
-      user: null,
-      rememberMe: false,
-      showPassword: false,
-      isLoading: false,
-    );
+    return const AuthUiModel();
   }
 
   void updateRememberMe(bool rememberMe) {

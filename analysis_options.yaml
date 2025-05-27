@@ -6,6 +6,8 @@ analyzer:
     strict-raw-types: true
   plugins:
     - custom_lint
+  exclude: 
+    [build/**, lib/**.freezed.dart, lib/**.g.dart]
   errors:
     # Otherwise cause the import of all_lint_rules to warn because of some rules conflicts.
     # We explicitly enabled even conflicting rules and are fixing the conflict
@@ -20,6 +22,21 @@ analyzer:
 
 linter:
   rules:
+    # Why i have to sort deps lol
+    sort_pub_dependencies: false
+    # Unnecessary, for reading
+    avoid_types_on_closure_parameters: false
+    # I dont like its lint
+    require_trailing_commas: false
+    # conflicts with `prefer_final_locals`
+    unnecessary_final: false
+    # I dont find this useful, and it conflicts with `prefer_final_locals`
+    omit_local_variable_types: false
+    # Conflicts with build method of widgets
+    prefer_final_parameters: false
+    # Not for this project, which is a library.
+    public_member_api_docs: false
+
     # Maybe later. Too many to fix right now.
     document_ignores: false
 

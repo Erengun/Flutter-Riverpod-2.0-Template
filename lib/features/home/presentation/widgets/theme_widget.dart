@@ -15,7 +15,7 @@ class ThemeWidget extends ConsumerWidget {
     return Row(
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(15),
           child: Text(
             tr('toggle_theme'),
             style: Theme.of(context)

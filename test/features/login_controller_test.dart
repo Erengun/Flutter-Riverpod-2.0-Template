@@ -1,7 +1,6 @@
+import 'package:flutter_riverpod_template/features/authentication/presentation/login/login_controller.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:riverpod/riverpod.dart';
-
-import '../../lib/features/authentication/presentation/login/login_controller.dart';
 
 void main() {
   late ProviderContainer container;
@@ -36,7 +35,7 @@ void main() {
     });
 
     test('throws exception when credentials are empty', () async {
-      final controller = container.read(loginControllerProvider.notifier);
+      final LoginController controller = container.read(loginControllerProvider.notifier);
       expect(
         () => controller.login(email: '', password: ''),
         throwsException,
@@ -46,7 +45,7 @@ void main() {
 
   group('register', () {
     test('successful registration updates state correctly', () async {
-      final controller = container.read(loginControllerProvider.notifier);
+      final LoginController controller = container.read(loginControllerProvider.notifier);
 
       await controller.register(
         email: 'eve.holt@reqres.in',
@@ -57,7 +56,7 @@ void main() {
     });
 
     test('throws exception when credentials are empty', () async {
-      final controller = container.read(loginControllerProvider.notifier);
+      final LoginController controller = container.read(loginControllerProvider.notifier);
 
       expect(
         () => controller.register(email: '', password: ''),

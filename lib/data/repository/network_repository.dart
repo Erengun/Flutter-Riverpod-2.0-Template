@@ -15,7 +15,7 @@ part 'network_repository.g.dart';
 class NetworkRepository extends _$NetworkRepository {
   @override
   Dio build() {
-    Dio dio = Dio(BaseOptions(baseUrl: Endpoints.baseUrl));
+    final Dio dio = Dio(BaseOptions(baseUrl: Endpoints.baseUrl));
     // Accept: application/json"
     dio.options.headers['Accept'] = 'application/json';
 
