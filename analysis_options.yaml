@@ -6,6 +6,8 @@ analyzer:
     strict-raw-types: true
   plugins:
     - custom_lint
+  exclude: 
+    [build/**, lib/**.freezed.dart, lib/**.g.dart]
   errors:
     # Otherwise cause the import of all_lint_rules to warn because of some rules conflicts.
     # We explicitly enabled even conflicting rules and are fixing the conflict
@@ -20,26 +22,29 @@ analyzer:
 
 linter:
   rules:
+    # Why i have to sort deps lol
+    sort_pub_dependencies: false
+    # Unnecessary, for reading
+    avoid_types_on_closure_parameters: false
+    # I dont like its lint
+    require_trailing_commas: false
+    # conflicts with `prefer_final_locals`
+    unnecessary_final: false
+    # I dont find this useful, and it conflicts with `prefer_final_locals`
+    omit_local_variable_types: false
+    # Conflicts with build method of widgets
+    prefer_final_parameters: false
+    # Not for this project, which is a library.
+    public_member_api_docs: false
+
     # Maybe later. Too many to fix right now.
     document_ignores: false
-
-    # Not an issue if using dartfmt
-    no_adjacent_strings_in_list: false
 
     # False positive for custom enum-like classes (such as Flutter's "Colors")
     avoid_classes_with_only_static_members: false
 
     # False positive when the future is returned by the function
     discarded_futures: false
-
-    # Low value and lacks a quick fix
-    combinators_ordering: false
-
-    # Conflicts with unused variables
-    no_leading_underscores_for_local_identifiers: false
-
-    # false positive
-    one_member_abstracts: false
 
     # Too verbose with little value, and this is taken care of by the Flutter devtool anyway.
     diagnostic_describe_all_properties: false
@@ -71,7 +76,7 @@ linter:
     # above is fine.
     lines_longer_than_80_chars: false
 
-    # Conflicts with disabling `implicit-dynamic`
+    # Conflicts with disabling `always_specify_types`
     avoid_annotating_with_dynamic: false
 
     # conflicts with `prefer_relative_imports`

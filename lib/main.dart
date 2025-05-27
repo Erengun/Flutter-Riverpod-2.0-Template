@@ -45,7 +45,7 @@ void main() async {
         ],
         path: Strings.localizationsPath,
         fallbackLocale: const Locale('en'),
-        child: MyApp(),
+        child: const MyApp(),
       ),
     ),
   );

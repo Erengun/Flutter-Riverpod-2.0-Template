@@ -19,13 +19,10 @@ class ThemeLogic extends _$ThemeLogic {
     switch (mode) {
       case 'ThemeMode.dark':
         themeMode = ThemeMode.dark;
-        break;
       case 'ThemeMode.light':
         themeMode = ThemeMode.light;
-        break;
       case 'ThemeMode.system':
         themeMode = ThemeMode.system;
-        break;
     }
     return ThemeUiModel(themeMode: themeMode);
   }

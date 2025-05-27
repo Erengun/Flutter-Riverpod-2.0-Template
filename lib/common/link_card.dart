@@ -12,6 +12,7 @@ class LinkCard extends StatelessWidget {
   final Uri url;
 
   @override
+
   Widget build(BuildContext context) {
     return Card(
       elevation: 2,
