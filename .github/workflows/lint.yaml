@@ -23,6 +23,13 @@ jobs:
 
       - name: Install dependencies
         run: flutter pub get
+
+      - name: Temporary fix analyzer
+        run:
+          echo "Temporary fix analyzer see https://github.com/dart-lang/sdk/issues/60784"
+          flutter pub add override:analyzer:7.3.0
+          flutter pub add override:analyzer_plugin:0.12.0
+          flutter pub add override:custom_lint_visitor:1.0.0+7.1.0
     
       - name: Run Build Runner
         run: flutter pub run build_runner build --delete-conflicting-outputs
